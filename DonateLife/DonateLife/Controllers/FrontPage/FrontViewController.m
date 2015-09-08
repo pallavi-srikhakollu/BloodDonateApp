@@ -14,6 +14,7 @@ CLLocation *userLocation;
     NSMutableArray *arrayOfDonars;
    UITableView *tableViewForSettings;
      CLLocationManager *locationManager;
+    UIStoryboard *storyboard;
   
 }
 
@@ -33,10 +34,11 @@ CLLocation *userLocation;
     [super viewDidLoad];
        NSUserDefaults *defaults= [NSUserDefaults standardUserDefaults];
     self.navigationController.navigationBarHidden = true;
+    storyboard = [UIStoryboard storyboardWithName:MAIN bundle:nil];
 
-    if(![[[defaults dictionaryRepresentation] allKeys] containsObject:@"user"])
+    if(![[[defaults dictionaryRepresentation] allKeys] containsObject:USER])
     {
-         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+       
         RegistrationPageViewController *registration = [storyboard instantiateViewControllerWithIdentifier:@"RegistrationPageViewController"];
         NSLog(@"%@",self.navigationController);
         [self.navigationController pushViewController:registration animated:NO];
@@ -100,6 +102,7 @@ bloodSelected = @"o+";
 -(void)viewWillAppear:(BOOL)animated{
 
     self.navigationController.navigationBarHidden = true;
+    layoutConstraintHeightForTable.constant = 0;
 
 }
 
@@ -120,12 +123,12 @@ bloodSelected = @"o+";
         {
             Donor *donarInfo = [[Donor alloc]init];
             
-            donarInfo.name = [donar valueForKey:@"name"];
+            donarInfo.name = [donar valueForKey:NAME];
             
-            donarInfo.email = [donar valueForKey:@"email"];
-            donarInfo.phoneNo = [donar valueForKey:@"phone"];
-            donarInfo.lattitude = [[donar valueForKey:@"lat"] integerValue];
-            donarInfo.longitude  = [[ donar valueForKey:@"lng"] integerValue];
+            donarInfo.email = [donar valueForKey:EMAIL];
+            donarInfo.phoneNo = [donar valueForKey:PHONENO];
+            donarInfo.lattitude = [[donar valueForKey:LATTITUDE] integerValue];
+            donarInfo.longitude  = [[ donar valueForKey:LONGITUDE] integerValue];
             [arrayOfDonars addObject:donarInfo];
         }
         
@@ -135,16 +138,20 @@ bloodSelected = @"o+";
 
 
 - (IBAction)buttonHistoryAction:(id)sender {
+    
+    HistoryListViewController *historyListViewController  = [storyboard instantiateViewControllerWithIdentifier:@"HistoryListViewController"];
+    [self.navigationController pushViewController:historyListViewController animated:YES];
+    
 }
 - (IBAction)buttonSearchBloodAction:(id)sender {
     layoutConstraintHeightForTable.constant = 182;
-    [tableViewBloodList registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    [tableViewBloodList registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     [tableViewBloodList reloadData];
 
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [tableViewForSettings removeFromSuperview];
-    
+    layoutConstraintHeightForTable.constant = 0;
 }
 - (IBAction)barButtonSettingAction:(id)sender {
     
@@ -155,7 +162,7 @@ bloodSelected = @"o+";
         
         tableViewForSettings.dataSource= self;
         tableViewForSettings.delegate=self;
-        [tableViewForSettings registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+        [tableViewForSettings registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
         [tableViewForSettings reloadData];
         
         [self.view addSubview:tableViewForSettings];
@@ -225,7 +232,7 @@ bloodSelected = @"o+";
 #pragma mark - Selecting row on table view
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+   // UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     
     if(tableView == tableViewBloodList){
@@ -272,10 +279,10 @@ bloodSelected = @"o+";
 -(void) DicitonaryFormation{
 
    dictonaryToPost = [[NSMutableDictionary alloc]init];
-    [dictonaryToPost setObject:bloodSelected forKey:@"bloodType"];
-    [dictonaryToPost setObject:[[NSNumber numberWithFloat:userLocation.coordinate.latitude] stringValue]  forKey:@"lat"];
+    [dictonaryToPost setObject:bloodSelected forKey:BLOODTYPE];
+    [dictonaryToPost setObject:[[NSNumber numberWithFloat:userLocation.coordinate.latitude] stringValue]  forKey:LATTITUDE];
 
-     [dictonaryToPost setObject:[[NSNumber numberWithFloat:userLocation.coordinate.longitude] stringValue]  forKey:@"lng"];
+     [dictonaryToPost setObject:[[NSNumber numberWithFloat:userLocation.coordinate.longitude] stringValue]  forKey:LONGITUDE];
   
     //return dictonaryToPost;
 }

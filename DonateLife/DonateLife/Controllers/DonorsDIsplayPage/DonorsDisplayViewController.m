@@ -55,7 +55,7 @@
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:userLocation.coordinate.latitude
                                                             longitude:userLocation.coordinate.longitude
-                                                                 zoom:15];
+                                                                 zoom:11];
     mapView.mapView.myLocationEnabled = YES;
     mapView.mapView.mapType = kGMSTypeNormal;
     
@@ -68,14 +68,26 @@
 
 }
 
--(void)mapMarker:(CLLocation*)location{
+-(void)mapMarker:(CLLocation*)location withName:(NSString *)title withPhoneNo:(NSString*)phoneNo{
 GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
     
     marker.map = mapView.mapView;
-    marker.title = @"pune";
-    marker .snippet = @"Population: hello";
+    marker.title =  title;
+    marker .snippet = phoneNo;
     marker.infoWindowAnchor = CGPointMake(0.5, 0.5);
 
+}
+- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Input alert!!"
+                                                                   message:@"Select image from "
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"DO you want to call " style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {NSLog(@"Hello");}];
+    
+    [alert addAction:defaultAction];
+[self presentViewController:alert animated:YES completion:nil];
+    
 }
 
 
@@ -105,7 +117,8 @@ GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
     CLLocationDistance distance = [userLocation distanceFromLocation:donorLocation]/1000;
     //NSLog(@"%f",distance);
     cell.labelForDistance.text = [[NSNumber numberWithFloat:distance] stringValue];
-  [self mapMarker:donorLocation];
+    [self mapMarker:donorLocation withName:donor.name withPhoneNo:donor.phoneNo];
+  //[self mapMarker():donorLocation];
     return cell;
     
 }
@@ -118,6 +131,15 @@ GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    
 }
+
+#pragma mark  : alert
+
+-(void)alertMessageDisplay:(NSString *)title withMessage:(NSString *)message{
+    UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
+    [alertView show];
+}
+
+
 
 #pragma mark :Segmented controller
 
@@ -207,7 +229,7 @@ GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
                                                                       multiplier:1.0
                                                                         constant:0.0]];
 
-        [self mapMarker:userLocation];
+        [self mapMarker:userLocation withName:@"YourLocation" withPhoneNo:@"Your PhoneNo"];
     }
     
 }

@@ -3,6 +3,12 @@
 #import "RegistrationPageViewController.h"
 #define FRONTVIEWCONTROLLER @"FrontViewController"
 #import "FrontViewController.h"
+#define UPDATE @"UPDATE"
+#define MESSAGEFOREMPTYNAMEFEILD @"Name cannot be empty"
+#define MESSAGEFOREMPTYPHONEFEILD @"Phone No cannot be empty"
+#define MESSAGEFOREMPTYEMAILIDFEILD @"Email ID cannot be empty"
+
+
 @interface RegistrationPageViewController ()
 {
     NSInteger selectedRowAtPicker;
@@ -66,7 +72,7 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
 -(void)updateScreen{
 
     self.navigationController.navigationBarHidden = false;
-    [buttonForRegisterAndUpdate setTitle:@"UPDATE" forState:UIControlStateNormal];
+    [buttonForRegisterAndUpdate setTitle:UPDATE forState:UIControlStateNormal];
     
     textFieldName.text = [[defaults dictionaryRepresentation] valueForKey:NAME];
     textFieldMobileNo.text = [[defaults dictionaryRepresentation] valueForKey:PHONENO];
@@ -92,25 +98,25 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
 
 
 - (IBAction)buttonActionRegister:(id)sender {
-    if([[self trimWhiteSpaces:(textFieldName.text)] isEqualToString:@""]) {
+    if([[self trimWhiteSpaces:(textFieldName.text)] isEqualToString:EMPTYSTRING]) {
     
-        [self alertMessageDisplay:titleForEmpty withMessage:@"Name cannot be empty"];
+        [self alertMessageDisplay:titleForEmpty withMessage:MESSAGEFOREMPTYNAMEFEILD];
     
     }
-    else if([[self trimWhiteSpaces:(textFieldMobileNo.text)] isEqualToString:@""]) {
+    else if([[self trimWhiteSpaces:(textFieldMobileNo.text)] isEqualToString:EMPTYSTRING]) {
         
-        [self alertMessageDisplay:titleForEmpty withMessage:@"Mobile number cannot be empty"];
+        [self alertMessageDisplay:titleForEmpty withMessage:MESSAGEFOREMPTYPHONEFEILD];
         
     }
-    else if([[self trimWhiteSpaces:(textFieldEmailId.text)] isEqualToString:@""]) {
+    else if([[self trimWhiteSpaces:(textFieldEmailId.text)] isEqualToString:EMPTYSTRING]) {
     
-        [self alertMessageDisplay:titleForEmpty withMessage:@"Email ID cannot be empty"];
+        [self alertMessageDisplay:titleForEmpty withMessage:MESSAGEFOREMPTYEMAILIDFEILD];
         
     }
     else{
     
     
-    NSLog(@"%d",_switchForPrivacy.on);
+   // NSLog(@"%d",_switchForPrivacy.on);
   
         if(_switchForPrivacy.on == 1){
             privacy = ON;
@@ -126,13 +132,13 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
     [defaults setObject:textFieldEmailId.text forKey:EMAIL];
     [defaults setObject:[BLOODTYPES objectAtIndex:selectedRowAtPicker] forKey:BLOODTYPE];
     [defaults setObject:privacy forKey:PRIVACY];
-    [defaults setObject:REGISTERED forKey:@"user"];
+    [defaults setObject:REGISTERED forKey:USER];
     [defaults synchronize];
     
-    NSLog(@"Data saved");
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+   // NSLog(@"Data saved");
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:MAIN bundle:nil];
         FrontViewController *front = [storyboard instantiateViewControllerWithIdentifier:FRONTVIEWCONTROLLER];
-        NSLog(@"%@",self.navigationController);
+       // NSLog(@"%@",self.navigationController);
         [self.navigationController pushViewController:front animated:YES];
     }
     
@@ -200,10 +206,10 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dicitonaryToConvert
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
-    NSLog(@"%@",jsonData);
+    //NSLog(@"%@",jsonData);
     NSString* aStr;
     aStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",aStr);
+    //NSLog(@"%@",aStr);
     
 }
 -(void) DicitonaryFormation{
@@ -214,10 +220,10 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
     [user setObject:textFieldEmailId.text forKey:EMAIL];
     [user setObject:[BLOODTYPES objectAtIndex:selectedRowAtPicker] forKey:BLOODTYPE];
     
-    [dictonaryToPost setObject:[[NSNumber numberWithFloat:userLocation.coordinate.latitude] stringValue]  forKey:@"lat"];
+    [dictonaryToPost setObject:[[NSNumber numberWithFloat:userLocation.coordinate.latitude] stringValue]  forKey:LATTITUDE];
     
-    [dictonaryToPost setObject:[[NSNumber numberWithFloat:userLocation.coordinate.longitude] stringValue]  forKey:@"lng"];
-    [dictonaryToPost setObject:user forKey:@"user"];
+    [dictonaryToPost setObject:[[NSNumber numberWithFloat:userLocation.coordinate.longitude] stringValue]  forKey:LONGITUDE];
+    [dictonaryToPost setObject:user forKey:USER];
     
    
 }

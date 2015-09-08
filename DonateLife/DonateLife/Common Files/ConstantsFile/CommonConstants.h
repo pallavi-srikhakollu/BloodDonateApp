@@ -6,6 +6,9 @@
 #define BLOODTYPES [NSArray arrayWithObjects:@"A+",@"A-",@"B+",@"B-",@"AB+",@"AB-",@"O+", nil ]
 #define SETTINGLIST [NSArray arrayWithObjects:@"Edit Profile",@"Privacy", nil]
 #define CellIdentifier  @"cell"
+#define EMPTYSTRING @""
+#define MAIN @"Main"
+
 //static  NSArray *bloodTypes =[[NSArray alloc] initWithObjects:@"A+",@"A-",@"B+",@"B-",@"AB+",@"AB-",@"O+", nil];
 //
 #endif

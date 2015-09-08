@@ -1,15 +1,9 @@
-//
-//  FrontViewController.h
-//  DonateLife
-//
-//  Created by webonise on 03/09/15.
-//  Copyright (c) 2015 webonise. All rights reserved.
-//
+
 
 #import <UIKit/UIKit.h>
 #import "RegistrationPageViewController.h"
 #import "DonorsDisplayViewController.h"
-
+#import "HistoryListViewController.h"
 
 @interface FrontViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>
 

@@ -1,14 +1,14 @@
 //
-//  CustomTableViewCell.m
+//  HistoryCustomTableViewCell.m
 //  DonateLife
 //
-//  Created by webonise on 05/09/15.
+//  Created by webonise on 08/09/15.
 //  Copyright (c) 2015 webonise. All rights reserved.
 //
 
-#import "CustomTableViewCell.h"
+#import "HistoryCustomTableViewCell.h"
 
-@implementation CustomTableViewCell
+@implementation HistoryCustomTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
@@ -17,11 +17,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    
-}
-- (IBAction)buttonActionContactNo:(id)sender {
-    NSLog(@"HELLO");
-    
+    // Configure the view for the selected state
 }
 
 @end

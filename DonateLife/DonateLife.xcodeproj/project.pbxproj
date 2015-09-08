@@ -25,6 +25,8 @@
 		F1EC8FED1B9F009900CC06EA /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EC8FEB1B9F009900CC06EA /* CustomTableViewCell.xib */; };
 		F1EC8FF11B9F00B100CC06EA /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EC8FEF1B9F00B100CC06EA /* MapView.m */; };
 		F1EC8FF21B9F00B100CC06EA /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EC8FF01B9F00B100CC06EA /* MapView.xib */; };
+		F1EC8FF61B9F0D1900CC06EA /* HistoryCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EC8FF41B9F0D1900CC06EA /* HistoryCustomTableViewCell.m */; };
+		F1EC8FF71B9F0D1900CC06EA /* HistoryCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EC8FF51B9F0D1900CC06EA /* HistoryCustomTableViewCell.xib */; };
 		F1ED26481B99833800C2CB4F /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1ED26471B99833800C2CB4F /* GoogleMaps.framework */; };
 		F1ED264A1B99834F00C2CB4F /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F1ED26491B99834F00C2CB4F /* GoogleMaps.bundle */; };
 		F1ED26631B99850A00C2CB4F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1ED264B1B99840700C2CB4F /* AVFoundation.framework */; };
@@ -73,6 +75,9 @@
 		F1EC8FEE1B9F00B100CC06EA /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapView.h; path = Controllers/DonorsDIsplayPage/MapViewPage/MapView.h; sourceTree = "<group>"; };
 		F1EC8FEF1B9F00B100CC06EA /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapView.m; path = Controllers/DonorsDIsplayPage/MapViewPage/MapView.m; sourceTree = "<group>"; };
 		F1EC8FF01B9F00B100CC06EA /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapView.xib; path = Controllers/DonorsDIsplayPage/MapViewPage/MapView.xib; sourceTree = "<group>"; };
+		F1EC8FF31B9F0D1900CC06EA /* HistoryCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryCustomTableViewCell.h; path = Controllers/HistoryControllers/CustomCell/HistoryCustomTableViewCell.h; sourceTree = "<group>"; };
+		F1EC8FF41B9F0D1900CC06EA /* HistoryCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryCustomTableViewCell.m; path = Controllers/HistoryControllers/CustomCell/HistoryCustomTableViewCell.m; sourceTree = "<group>"; };
+		F1EC8FF51B9F0D1900CC06EA /* HistoryCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HistoryCustomTableViewCell.xib; path = Controllers/HistoryControllers/CustomCell/HistoryCustomTableViewCell.xib; sourceTree = "<group>"; };
 		F1ED26471B99833800C2CB4F /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		F1ED26491B99834F00C2CB4F /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
 		F1ED264B1B99840700C2CB4F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -252,8 +257,19 @@
 			children = (
 				F19C57F11B9D4B31008D750C /* HistoryListViewController.h */,
 				F19C57F21B9D4B31008D750C /* HistoryListViewController.m */,
+				F1EC8FF81B9F0D2200CC06EA /* CustomCell */,
 			);
 			name = HistoryPage;
+			sourceTree = "<group>";
+		};
+		F1EC8FF81B9F0D2200CC06EA /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				F1EC8FF31B9F0D1900CC06EA /* HistoryCustomTableViewCell.h */,
+				F1EC8FF41B9F0D1900CC06EA /* HistoryCustomTableViewCell.m */,
+				F1EC8FF51B9F0D1900CC06EA /* HistoryCustomTableViewCell.xib */,
+			);
+			name = CustomCell;
 			sourceTree = "<group>";
 		};
 		F1ED26461B9982F900C2CB4F /* Framework */ = {
@@ -345,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1EC8FF21B9F00B100CC06EA /* MapView.xib in Resources */,
+				F1EC8FF71B9F0D1900CC06EA /* HistoryCustomTableViewCell.xib in Resources */,
 				F19E44191B98602E0080ACC8 /* Main.storyboard in Resources */,
 				F19C58061B9D9C1A008D750C /* Default-568h@2x.png in Resources */,
 				F1EC8FE81B9F007F00CC06EA /* ListView.xib in Resources */,
@@ -370,6 +387,7 @@
 				F19C58031B9D9B31008D750C /* Donor.m in Sources */,
 				F19C57F31B9D4B31008D750C /* HistoryListViewController.m in Sources */,
 				F1EC8FE71B9F007F00CC06EA /* ListView.m in Sources */,
+				F1EC8FF61B9F0D1900CC06EA /* HistoryCustomTableViewCell.m in Sources */,
 				F1EC8FEC1B9F009900CC06EA /* CustomTableViewCell.m in Sources */,
 				F1EC8FD61B9EEDBC00CC06EA /* RegistrationPageViewController.m in Sources */,
 				F1EC8FF11B9F00B100CC06EA /* MapView.m in Sources */,
