@@ -16,13 +16,17 @@
 		F19E44191B98602E0080ACC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F19E44171B98602E0080ACC8 /* Main.storyboard */; };
 		F19E441B1B98602E0080ACC8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F19E441A1B98602E0080ACC8 /* Images.xcassets */; };
 		F19E441E1B98602E0080ACC8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19E441C1B98602E0080ACC8 /* LaunchScreen.xib */; };
-		F19E44361B9863160080ACC8 /* RegistrationPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E44351B9863160080ACC8 /* RegistrationPageViewController.m */; };
-		F19E44391B9890FE0080ACC8 /* FrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F19E44381B9890FE0080ACC8 /* FrontViewController.m */; };
-		F1ED263B1B99791A00C2CB4F /* DonorsDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1ED263A1B99791A00C2CB4F /* DonorsDisplayViewController.m */; };
-		F1ED26421B9979C900C2CB4F /* ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1ED263D1B9979C900C2CB4F /* ListView.m */; };
-		F1ED26431B9979C900C2CB4F /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1ED263F1B9979C900C2CB4F /* MapView.m */; };
-		F1ED26441B9979C900C2CB4F /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1ED26401B9979C900C2CB4F /* MapView.xib */; };
-		F1ED26451B9979C900C2CB4F /* ListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1ED26411B9979C900C2CB4F /* ListView.xib */; };
+		F1EC8FD61B9EEDBC00CC06EA /* RegistrationPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EC8FD51B9EEDBC00CC06EA /* RegistrationPageViewController.m */; };
+		F1EC8FDB1B9EFD8300CC06EA /* FrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EC8FDA1B9EFD8300CC06EA /* FrontViewController.m */; };
+		F1EC8FDE1B9EFDDB00CC06EA /* DonorsDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EC8FDD1B9EFDDB00CC06EA /* DonorsDisplayViewController.m */; };
+		F1EC8FE71B9F007F00CC06EA /* ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EC8FE51B9F007F00CC06EA /* ListView.m */; };
+		F1EC8FE81B9F007F00CC06EA /* ListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EC8FE61B9F007F00CC06EA /* ListView.xib */; };
+		F1EC8FEC1B9F009900CC06EA /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EC8FEA1B9F009900CC06EA /* CustomTableViewCell.m */; };
+		F1EC8FED1B9F009900CC06EA /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EC8FEB1B9F009900CC06EA /* CustomTableViewCell.xib */; };
+		F1EC8FF11B9F00B100CC06EA /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EC8FEF1B9F00B100CC06EA /* MapView.m */; };
+		F1EC8FF21B9F00B100CC06EA /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EC8FF01B9F00B100CC06EA /* MapView.xib */; };
+		F1EC8FF61B9F0D1900CC06EA /* HistoryCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EC8FF41B9F0D1900CC06EA /* HistoryCustomTableViewCell.m */; };
+		F1EC8FF71B9F0D1900CC06EA /* HistoryCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EC8FF51B9F0D1900CC06EA /* HistoryCustomTableViewCell.xib */; };
 		F1ED26481B99833800C2CB4F /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1ED26471B99833800C2CB4F /* GoogleMaps.framework */; };
 		F1ED264A1B99834F00C2CB4F /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F1ED26491B99834F00C2CB4F /* GoogleMaps.bundle */; };
 		F1ED26631B99850A00C2CB4F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1ED264B1B99840700C2CB4F /* AVFoundation.framework */; };
@@ -37,8 +41,7 @@
 		F1ED266C1B99857A00C2CB4F /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1ED26511B99842C00C2CB4F /* CoreText.framework */; };
 		F1ED266D1B99858400C2CB4F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1ED264F1B99842100C2CB4F /* CoreLocation.framework */; };
 		F1ED266E1B99859800C2CB4F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1ED264D1B99841800C2CB4F /* CoreData.framework */; };
-		F1EFCDEF1B9AC21E006B0C80 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EFCDED1B9AC21E006B0C80 /* CustomTableViewCell.m */; };
-		F1EFCDF01B9AC21E006B0C80 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EFCDEE1B9AC21E006B0C80 /* CustomTableViewCell.xib */; };
+		F1ED72871B9FFD980081E07E /* AddHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1ED72861B9FFD980081E07E /* AddHistoryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +52,6 @@
 		F19C58021B9D9B31008D750C /* Donor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Donor.m; path = DonateLife/Model/Donor.m; sourceTree = "<group>"; };
 		F19C58051B9D9C1A008D750C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F19C58071B9D9D7C008D750C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = "Common Files/PrefixHeader.pch"; sourceTree = "<group>"; };
-		F19C58081B9DAB8A008D750C /* CommonConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommonConstants.h; path = ../CommonConstants.h; sourceTree = "<group>"; };
 		F19C58091B9DAE66008D750C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "Common Files/AppDelegate.h"; sourceTree = "<group>"; };
 		F19C580A1B9DAE66008D750C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "Common Files/AppDelegate.m"; sourceTree = "<group>"; };
 		F19C580E1B9DAFCE008D750C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SupportingFiles/Info.plist; sourceTree = "<group>"; };
@@ -57,18 +59,26 @@
 		F19E44181B98602E0080ACC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F19E441A1B98602E0080ACC8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F19E441D1B98602E0080ACC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		F19E44341B9863160080ACC8 /* RegistrationPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistrationPageViewController.h; path = Controllers/RegistrationPageViewController.h; sourceTree = "<group>"; };
-		F19E44351B9863160080ACC8 /* RegistrationPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistrationPageViewController.m; path = Controllers/RegistrationPageViewController.m; sourceTree = "<group>"; };
-		F19E44371B9890FE0080ACC8 /* FrontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrontViewController.h; path = Controllers/FrontViewController.h; sourceTree = "<group>"; };
-		F19E44381B9890FE0080ACC8 /* FrontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrontViewController.m; path = Controllers/FrontViewController.m; sourceTree = "<group>"; };
-		F1ED26391B99791A00C2CB4F /* DonorsDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DonorsDisplayViewController.h; path = Controllers/DonorsDisplayViewController.h; sourceTree = "<group>"; };
-		F1ED263A1B99791A00C2CB4F /* DonorsDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DonorsDisplayViewController.m; path = Controllers/DonorsDisplayViewController.m; sourceTree = "<group>"; };
-		F1ED263C1B9979C900C2CB4F /* ListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListView.h; path = Controllers/ListView.h; sourceTree = "<group>"; };
-		F1ED263D1B9979C900C2CB4F /* ListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListView.m; path = Controllers/ListView.m; sourceTree = "<group>"; };
-		F1ED263E1B9979C900C2CB4F /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapView.h; path = Controllers/MapView.h; sourceTree = "<group>"; };
-		F1ED263F1B9979C900C2CB4F /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapView.m; path = Controllers/MapView.m; sourceTree = "<group>"; };
-		F1ED26401B9979C900C2CB4F /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapView.xib; path = Controllers/MapView.xib; sourceTree = "<group>"; };
-		F1ED26411B9979C900C2CB4F /* ListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListView.xib; path = Controllers/ListView.xib; sourceTree = "<group>"; };
+		F1EC8FD41B9EEDBC00CC06EA /* RegistrationPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistrationPageViewController.h; path = Controllers/RegistrationPage/RegistrationPageViewController.h; sourceTree = "<group>"; };
+		F1EC8FD51B9EEDBC00CC06EA /* RegistrationPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistrationPageViewController.m; path = Controllers/RegistrationPage/RegistrationPageViewController.m; sourceTree = "<group>"; };
+		F1EC8FD71B9EEF6D00CC06EA /* CommonKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommonKeys.h; path = "Common Files/ConstantsFile/CommonKeys.h"; sourceTree = "<group>"; };
+		F1EC8FD81B9EFCC300CC06EA /* CommonConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonConstants.h; path = "Common Files/ConstantsFile/CommonConstants.h"; sourceTree = "<group>"; };
+		F1EC8FD91B9EFD8300CC06EA /* FrontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrontViewController.h; path = Controllers/FrontPage/FrontViewController.h; sourceTree = "<group>"; };
+		F1EC8FDA1B9EFD8300CC06EA /* FrontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrontViewController.m; path = Controllers/FrontPage/FrontViewController.m; sourceTree = "<group>"; };
+		F1EC8FDC1B9EFDDB00CC06EA /* DonorsDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DonorsDisplayViewController.h; path = Controllers/DonorsDIsplayPage/DonorsDisplayViewController.h; sourceTree = "<group>"; };
+		F1EC8FDD1B9EFDDB00CC06EA /* DonorsDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DonorsDisplayViewController.m; path = Controllers/DonorsDIsplayPage/DonorsDisplayViewController.m; sourceTree = "<group>"; };
+		F1EC8FE41B9F007F00CC06EA /* ListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListView.h; path = Controllers/DonorsDIsplayPage/ListViewPage/ListView.h; sourceTree = "<group>"; };
+		F1EC8FE51B9F007F00CC06EA /* ListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListView.m; path = Controllers/DonorsDIsplayPage/ListViewPage/ListView.m; sourceTree = "<group>"; };
+		F1EC8FE61B9F007F00CC06EA /* ListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListView.xib; path = Controllers/DonorsDIsplayPage/ListViewPage/ListView.xib; sourceTree = "<group>"; };
+		F1EC8FE91B9F009900CC06EA /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTableViewCell.h; path = Controllers/DonorsDIsplayPage/ListViewPage/CustomCell/CustomTableViewCell.h; sourceTree = "<group>"; };
+		F1EC8FEA1B9F009900CC06EA /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTableViewCell.m; path = Controllers/DonorsDIsplayPage/ListViewPage/CustomCell/CustomTableViewCell.m; sourceTree = "<group>"; };
+		F1EC8FEB1B9F009900CC06EA /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomTableViewCell.xib; path = Controllers/DonorsDIsplayPage/ListViewPage/CustomCell/CustomTableViewCell.xib; sourceTree = "<group>"; };
+		F1EC8FEE1B9F00B100CC06EA /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapView.h; path = Controllers/DonorsDIsplayPage/MapViewPage/MapView.h; sourceTree = "<group>"; };
+		F1EC8FEF1B9F00B100CC06EA /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapView.m; path = Controllers/DonorsDIsplayPage/MapViewPage/MapView.m; sourceTree = "<group>"; };
+		F1EC8FF01B9F00B100CC06EA /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapView.xib; path = Controllers/DonorsDIsplayPage/MapViewPage/MapView.xib; sourceTree = "<group>"; };
+		F1EC8FF31B9F0D1900CC06EA /* HistoryCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryCustomTableViewCell.h; path = Controllers/HistoryControllers/CustomCell/HistoryCustomTableViewCell.h; sourceTree = "<group>"; };
+		F1EC8FF41B9F0D1900CC06EA /* HistoryCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryCustomTableViewCell.m; path = Controllers/HistoryControllers/CustomCell/HistoryCustomTableViewCell.m; sourceTree = "<group>"; };
+		F1EC8FF51B9F0D1900CC06EA /* HistoryCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HistoryCustomTableViewCell.xib; path = Controllers/HistoryControllers/CustomCell/HistoryCustomTableViewCell.xib; sourceTree = "<group>"; };
 		F1ED26471B99833800C2CB4F /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		F1ED26491B99834F00C2CB4F /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
 		F1ED264B1B99840700C2CB4F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -83,9 +93,8 @@
 		F1ED265D1B99847400C2CB4F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		F1ED265F1B99847E00C2CB4F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F1ED26611B99848900C2CB4F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		F1EFCDEC1B9AC21E006B0C80 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTableViewCell.h; path = Controllers/CustomTableViewCell.h; sourceTree = "<group>"; };
-		F1EFCDED1B9AC21E006B0C80 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTableViewCell.m; path = Controllers/CustomTableViewCell.m; sourceTree = "<group>"; };
-		F1EFCDEE1B9AC21E006B0C80 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomTableViewCell.xib; path = Controllers/CustomTableViewCell.xib; sourceTree = "<group>"; };
+		F1ED72851B9FFD980081E07E /* AddHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddHistoryViewController.h; path = Controllers/HistoryControllers/AddDetailsController/AddHistoryViewController.h; sourceTree = "<group>"; };
+		F1ED72861B9FFD980081E07E /* AddHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddHistoryViewController.m; path = Controllers/HistoryControllers/AddDetailsController/AddHistoryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,11 +175,12 @@
 		F19E44331B9862B80080ACC8 /* Common Files */ = {
 			isa = PBXGroup;
 			children = (
-				F19C58081B9DAB8A008D750C /* CommonConstants.h */,
+				F1EC8FD81B9EFCC300CC06EA /* CommonConstants.h */,
 				F19C580A1B9DAE66008D750C /* AppDelegate.m */,
 				F19C58091B9DAE66008D750C /* AppDelegate.h */,
 				F19C58071B9D9D7C008D750C /* PrefixHeader.pch */,
 				F19E44171B98602E0080ACC8 /* Main.storyboard */,
+				F1EC8FD71B9EEF6D00CC06EA /* CommonKeys.h */,
 			);
 			name = "Common Files";
 			sourceTree = "<group>";
@@ -178,17 +188,92 @@
 		F19E443A1B9895A50080ACC8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F1ED266F1B999C4100C2CB4F /* SegmentViews */,
-				F1ED26391B99791A00C2CB4F /* DonorsDisplayViewController.h */,
-				F1ED263A1B99791A00C2CB4F /* DonorsDisplayViewController.m */,
-				F19E44381B9890FE0080ACC8 /* FrontViewController.m */,
-				F19E44371B9890FE0080ACC8 /* FrontViewController.h */,
-				F19E44351B9863160080ACC8 /* RegistrationPageViewController.m */,
-				F19E44341B9863160080ACC8 /* RegistrationPageViewController.h */,
-				F19C57F11B9D4B31008D750C /* HistoryListViewController.h */,
-				F19C57F21B9D4B31008D750C /* HistoryListViewController.m */,
+				F1EC8FD01B9EEC4500CC06EA /* DonarDetails */,
+				F1EC8FD11B9EEC6200CC06EA /* FrontPage */,
+				F1EC8FD21B9EEC6C00CC06EA /* RegistrationPage */,
+				F1EC8FD31B9EEC7900CC06EA /* HistoryPage */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F1EC8FCD1B9EEB7900CC06EA /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				F1EC8FEE1B9F00B100CC06EA /* MapView.h */,
+				F1EC8FEF1B9F00B100CC06EA /* MapView.m */,
+				F1EC8FF01B9F00B100CC06EA /* MapView.xib */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		F1EC8FCE1B9EEB8500CC06EA /* List */ = {
+			isa = PBXGroup;
+			children = (
+				F1EC8FE41B9F007F00CC06EA /* ListView.h */,
+				F1EC8FE51B9F007F00CC06EA /* ListView.m */,
+				F1EC8FE61B9F007F00CC06EA /* ListView.xib */,
+				F1EC8FCF1B9EEB8F00CC06EA /* Custom cell */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		F1EC8FCF1B9EEB8F00CC06EA /* Custom cell */ = {
+			isa = PBXGroup;
+			children = (
+				F1EC8FE91B9F009900CC06EA /* CustomTableViewCell.h */,
+				F1EC8FEA1B9F009900CC06EA /* CustomTableViewCell.m */,
+				F1EC8FEB1B9F009900CC06EA /* CustomTableViewCell.xib */,
+			);
+			name = "Custom cell";
+			sourceTree = "<group>";
+		};
+		F1EC8FD01B9EEC4500CC06EA /* DonarDetails */ = {
+			isa = PBXGroup;
+			children = (
+				F1EC8FDC1B9EFDDB00CC06EA /* DonorsDisplayViewController.h */,
+				F1EC8FDD1B9EFDDB00CC06EA /* DonorsDisplayViewController.m */,
+				F1ED266F1B999C4100C2CB4F /* SegmentViews */,
+			);
+			name = DonarDetails;
+			sourceTree = "<group>";
+		};
+		F1EC8FD11B9EEC6200CC06EA /* FrontPage */ = {
+			isa = PBXGroup;
+			children = (
+				F1EC8FD91B9EFD8300CC06EA /* FrontViewController.h */,
+				F1EC8FDA1B9EFD8300CC06EA /* FrontViewController.m */,
+			);
+			name = FrontPage;
+			sourceTree = "<group>";
+		};
+		F1EC8FD21B9EEC6C00CC06EA /* RegistrationPage */ = {
+			isa = PBXGroup;
+			children = (
+				F1EC8FD41B9EEDBC00CC06EA /* RegistrationPageViewController.h */,
+				F1EC8FD51B9EEDBC00CC06EA /* RegistrationPageViewController.m */,
+			);
+			name = RegistrationPage;
+			sourceTree = "<group>";
+		};
+		F1EC8FD31B9EEC7900CC06EA /* HistoryPage */ = {
+			isa = PBXGroup;
+			children = (
+				F19C57F11B9D4B31008D750C /* HistoryListViewController.h */,
+				F19C57F21B9D4B31008D750C /* HistoryListViewController.m */,
+				F1ED72881B9FFDA40081E07E /* AddHistory */,
+				F1EC8FF81B9F0D2200CC06EA /* CustomCell */,
+			);
+			name = HistoryPage;
+			sourceTree = "<group>";
+		};
+		F1EC8FF81B9F0D2200CC06EA /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				F1EC8FF31B9F0D1900CC06EA /* HistoryCustomTableViewCell.h */,
+				F1EC8FF41B9F0D1900CC06EA /* HistoryCustomTableViewCell.m */,
+				F1EC8FF51B9F0D1900CC06EA /* HistoryCustomTableViewCell.xib */,
+			);
+			name = CustomCell;
 			sourceTree = "<group>";
 		};
 		F1ED26461B9982F900C2CB4F /* Framework */ = {
@@ -216,17 +301,19 @@
 		F1ED266F1B999C4100C2CB4F /* SegmentViews */ = {
 			isa = PBXGroup;
 			children = (
-				F1ED263C1B9979C900C2CB4F /* ListView.h */,
-				F1ED263D1B9979C900C2CB4F /* ListView.m */,
-				F1ED263E1B9979C900C2CB4F /* MapView.h */,
-				F1ED263F1B9979C900C2CB4F /* MapView.m */,
-				F1ED26401B9979C900C2CB4F /* MapView.xib */,
-				F1ED26411B9979C900C2CB4F /* ListView.xib */,
-				F1EFCDEC1B9AC21E006B0C80 /* CustomTableViewCell.h */,
-				F1EFCDED1B9AC21E006B0C80 /* CustomTableViewCell.m */,
-				F1EFCDEE1B9AC21E006B0C80 /* CustomTableViewCell.xib */,
+				F1EC8FCE1B9EEB8500CC06EA /* List */,
+				F1EC8FCD1B9EEB7900CC06EA /* Map */,
 			);
 			name = SegmentViews;
+			sourceTree = "<group>";
+		};
+		F1ED72881B9FFDA40081E07E /* AddHistory */ = {
+			isa = PBXGroup;
+			children = (
+				F1ED72851B9FFD980081E07E /* AddHistoryViewController.h */,
+				F1ED72861B9FFD980081E07E /* AddHistoryViewController.m */,
+			);
+			name = AddHistory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,12 +373,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1EC8FF21B9F00B100CC06EA /* MapView.xib in Resources */,
+				F1EC8FF71B9F0D1900CC06EA /* HistoryCustomTableViewCell.xib in Resources */,
 				F19E44191B98602E0080ACC8 /* Main.storyboard in Resources */,
 				F19C58061B9D9C1A008D750C /* Default-568h@2x.png in Resources */,
+				F1EC8FE81B9F007F00CC06EA /* ListView.xib in Resources */,
 				F19C580F1B9DAFCE008D750C /* Info.plist in Resources */,
-				F1EFCDF01B9AC21E006B0C80 /* CustomTableViewCell.xib in Resources */,
-				F1ED26451B9979C900C2CB4F /* ListView.xib in Resources */,
-				F1ED26441B9979C900C2CB4F /* MapView.xib in Resources */,
+				F1EC8FED1B9F009900CC06EA /* CustomTableViewCell.xib in Resources */,
 				F1ED264A1B99834F00C2CB4F /* GoogleMaps.bundle in Resources */,
 				F19E441E1B98602E0080ACC8 /* LaunchScreen.xib in Resources */,
 				F19E441B1B98602E0080ACC8 /* Images.xcassets in Resources */,
@@ -305,16 +393,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1EC8FDE1B9EFDDB00CC06EA /* DonorsDisplayViewController.m in Sources */,
 				F19C580B1B9DAE66008D750C /* AppDelegate.m in Sources */,
 				F19C58001B9D9AD5008D750C /* main.m in Sources */,
-				F19E44391B9890FE0080ACC8 /* FrontViewController.m in Sources */,
-				F1ED263B1B99791A00C2CB4F /* DonorsDisplayViewController.m in Sources */,
-				F19E44361B9863160080ACC8 /* RegistrationPageViewController.m in Sources */,
-				F1ED26431B9979C900C2CB4F /* MapView.m in Sources */,
+				F1EC8FDB1B9EFD8300CC06EA /* FrontViewController.m in Sources */,
 				F19C58031B9D9B31008D750C /* Donor.m in Sources */,
-				F1EFCDEF1B9AC21E006B0C80 /* CustomTableViewCell.m in Sources */,
-				F1ED26421B9979C900C2CB4F /* ListView.m in Sources */,
 				F19C57F31B9D4B31008D750C /* HistoryListViewController.m in Sources */,
+				F1EC8FE71B9F007F00CC06EA /* ListView.m in Sources */,
+				F1ED72871B9FFD980081E07E /* AddHistoryViewController.m in Sources */,
+				F1EC8FF61B9F0D1900CC06EA /* HistoryCustomTableViewCell.m in Sources */,
+				F1EC8FEC1B9F009900CC06EA /* CustomTableViewCell.m in Sources */,
+				F1EC8FD61B9EEDBC00CC06EA /* RegistrationPageViewController.m in Sources */,
+				F1EC8FF11B9F00B100CC06EA /* MapView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

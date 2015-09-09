@@ -1,39 +1,44 @@
 
 
 #import "FrontViewController.h"
-
+#import <MapKit/MKFoundation.h>
 
 @interface FrontViewController ()
 {
 
 CLLocation *userLocation;
+    NSString *bloodSelected;
+    NSMutableDictionary * dictonaryToPost;
+     NSMutableDictionary * dictonaryForDonar;
+     NSDictionary *dictonaryForInfo;
+    NSMutableArray *arrayOfDonars;
+   UITableView *tableViewForSettings;
+     CLLocationManager *locationManager;
+    UIStoryboard *storyboard;
+  
 }
-
-@property NSArray* settingList;
-@property NSArray *bloodTypes;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutConstraintHeightForTable;
 
 @end
 
 @implementation FrontViewController
 
-@synthesize locationManager;
-@synthesize settingList;
-@synthesize bloodTypes;
+
+
 @synthesize layoutConstraintHeightForTable;
 @synthesize tableViewBloodList;
-@synthesize tableViewForSettings;
-@synthesize dictonaryForDonar;
-@synthesize dictonaryForInfo;
+@synthesize donorsDisplayViewController;
+
+
 - (void)viewDidLoad {
   
     [super viewDidLoad];
        NSUserDefaults *defaults= [NSUserDefaults standardUserDefaults];
-    self.navigationController.navigationBarHidden = false;
+    self.navigationController.navigationBarHidden = true;
+    storyboard = [UIStoryboard storyboardWithName:MAIN bundle:nil];
 
-    if(![[[defaults dictionaryRepresentation] allKeys] containsObject:@"user"])
+    if(![[[defaults dictionaryRepresentation] allKeys] containsObject:USER])
     {
-         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+       
         RegistrationPageViewController *registration = [storyboard instantiateViewControllerWithIdentifier:@"RegistrationPageViewController"];
         NSLog(@"%@",self.navigationController);
         [self.navigationController pushViewController:registration animated:NO];
@@ -41,12 +46,10 @@ CLLocation *userLocation;
     }
     
        layoutConstraintHeightForTable.constant = 0;
-    settingList = [[NSArray alloc]initWithObjects:@"Edit Profile",@"Privacy", nil];
-    bloodTypes =[[NSArray alloc] initWithObjects:@"A+",@"A-",@"B+",@"B-",@"AB+",@"AB-",@"O+",@"O-", nil];
-    [self gettingCurrentLocation];
+       [self gettingCurrentLocation];
     NSLog(@"%f",userLocation.coordinate.latitude);
     locationManager.pausesLocationUpdatesAutomatically = YES;    
-    _arrayOfDonars = [[NSMutableArray alloc]init];
+    arrayOfDonars = [[NSMutableArray alloc]init];
     dictonaryForInfo = @{@"data":@[
                                  @{
                                      @"id":@1234,
@@ -82,9 +85,11 @@ CLLocation *userLocation;
                                  @"message":@"Success"
                                  }
                          };
+    NSLog(@"%@",self.navigationController);
+  
+bloodSelected = @"o+";
     [self parseData];
     
-    [self convertToJson];
     
     
     
@@ -96,7 +101,8 @@ CLLocation *userLocation;
 
 -(void)viewWillAppear:(BOOL)animated{
 
-    self.navigationController.navigationBarHidden = false;
+    self.navigationController.navigationBarHidden = true;
+    layoutConstraintHeightForTable.constant = 0;
 
 }
 
@@ -107,6 +113,7 @@ CLLocation *userLocation;
 
 
 #pragma mark :- parsing json
+
 -(void)parseData{
     NSLog(@"%@",[dictonaryForInfo valueForKeyPath:@"error.errorCode" ] );
     if([[dictonaryForInfo valueForKeyPath:@"status.statusCode" ] isEqualToValue: @200] )
@@ -116,13 +123,13 @@ CLLocation *userLocation;
         {
             Donor *donarInfo = [[Donor alloc]init];
             
-            donarInfo.name = [donar valueForKey:@"name"];
+            donarInfo.name = [donar valueForKey:NAME];
             
-            donarInfo.email = [donar valueForKey:@"email"];
-            donarInfo.phoneNo = [donar valueForKey:@"phone"];
-            donarInfo.lattitude = [[donar valueForKey:@"lat"] integerValue];
-            donarInfo.longitude  = [[ donar valueForKey:@"lng"] integerValue];
-            [_arrayOfDonars addObject:donarInfo];
+            donarInfo.email = [donar valueForKey:EMAIL];
+            donarInfo.phoneNo = [donar valueForKey:PHONENO];
+            donarInfo.lattitude = [[donar valueForKey:LATTITUDE] integerValue];
+            donarInfo.longitude  = [[ donar valueForKey:LONGITUDE] integerValue];
+            [arrayOfDonars addObject:donarInfo];
         }
         
     }
@@ -131,33 +138,37 @@ CLLocation *userLocation;
 
 
 - (IBAction)buttonHistoryAction:(id)sender {
+    
+    HistoryListViewController *historyListViewController  = [storyboard instantiateViewControllerWithIdentifier:@"HistoryListViewController"];
+    [self.navigationController pushViewController:historyListViewController animated:YES];
+    
 }
 - (IBAction)buttonSearchBloodAction:(id)sender {
-    layoutConstraintHeightForTable.constant = 200;
-    [tableViewBloodList registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    layoutConstraintHeightForTable.constant = 182;
+    [tableViewBloodList registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     [tableViewBloodList reloadData];
 
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self.tableViewForSettings removeFromSuperview];
-    //[self.bloodTypePicker removeFromSuperview];
+    [tableViewForSettings removeFromSuperview];
+    layoutConstraintHeightForTable.constant = 0;
 }
 - (IBAction)barButtonSettingAction:(id)sender {
     
     
-    if(![self.tableViewForSettings isDescendantOfView:self.view]) {
+    if(![tableViewForSettings isDescendantOfView:self.view]) {
         tableViewForSettings=[[UITableView alloc]init];
         tableViewForSettings.frame = CGRectMake(35,30,120,80);
         
         tableViewForSettings.dataSource= self;
         tableViewForSettings.delegate=self;
-        [tableViewForSettings registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+        [tableViewForSettings registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
         [tableViewForSettings reloadData];
         
-        [self.view addSubview:self.tableViewForSettings];
+        [self.view addSubview:tableViewForSettings];
     }
     else {
-        [self.tableViewForSettings removeFromSuperview];
+        [tableViewForSettings removeFromSuperview];
     }
     
     
@@ -185,7 +196,7 @@ CLLocation *userLocation;
     
         NSLog(@"%f",userLocation.coordinate.latitude);
         NSLog(@"%f",userLocation.coordinate.latitude);
-[locationManager stopUpdatingLocation];
+    [locationManager stopUpdatingLocation];
     
     }
 
@@ -194,23 +205,23 @@ CLLocation *userLocation;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(tableView == tableViewForSettings){
-        return settingList.count;
+        return SETTINGLIST.count;
     }
     else{
-        return bloodTypes.count;
+        return BLOODTYPES.count;
     }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView == tableViewForSettings){
         UITableViewCell *cell = [[UITableViewCell alloc]init] ;
-        cell.textLabel.text = [settingList objectAtIndex:indexPath.row];
+        cell.textLabel.text = [SETTINGLIST objectAtIndex:indexPath.row];
         cell.backgroundColor = [UIColor colorWithRed:77.0/255.0f green:104.0/255.0f blue:159.0/255.0f alpha:1.0];  ;
         
         return cell;
     }
     else{
         UITableViewCell *cell = [[UITableViewCell alloc]init] ;
-        cell.textLabel.text = [bloodTypes objectAtIndex:indexPath.row];
+        cell.textLabel.text = [BLOODTYPES objectAtIndex:indexPath.row];
         
         return cell;
         
@@ -221,24 +232,33 @@ CLLocation *userLocation;
 #pragma mark - Selecting row on table view
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+   // UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    
     if(tableView == tableViewBloodList){
             self.navigationController.navigationBarHidden = false;
         layoutConstraintHeightForTable.constant = 0;
-        _donorsDisplayViewController = [storyboard instantiateViewControllerWithIdentifier:@"DonorsDisplayViewController"];
+       DonorsDisplayViewController *donorsDisplayViewController1 = [storyboard instantiateViewControllerWithIdentifier:@"DonorsDisplayViewController"];
+        bloodSelected = [BLOODTYPES objectAtIndex:indexPath.row];
+        
+        [self DicitonaryFormation];
+        [self convertToJson:dictonaryToPost];
+        //[self convertToJson(dictonaryToPost)];
+
         NSLog(@"%@",userLocation);
-        _donorsDisplayViewController.donorsArray = _arrayOfDonars;
-        _donorsDisplayViewController.userLocation = userLocation;
-      [self.navigationController  pushViewController:_donorsDisplayViewController animated:YES];
+        donorsDisplayViewController1.donorsArray = arrayOfDonars;
+        donorsDisplayViewController1.userLocation = userLocation;
+      [self.navigationController  pushViewController:donorsDisplayViewController1 animated:YES];
         
     }
     else if(tableView == tableViewForSettings){
         switch (indexPath.row) {
             case 0:{
-                [self.tableViewForSettings removeFromSuperview];
+                [tableViewForSettings removeFromSuperview];
                 RegistrationPageViewController *registration = [storyboard instantiateViewControllerWithIdentifier:@"RegistrationPageViewController"];
                 NSLog(@"%@",self.navigationController);
                 registration.registerOrUpdate = YES;
+                registration.userLocation = userLocation;
                 [self.navigationController pushViewController:registration animated:YES];
             }
                 
@@ -254,12 +274,23 @@ CLLocation *userLocation;
     }
 }
 
+#pragma mark : API Functions
+
+-(void) DicitonaryFormation{
+
+   dictonaryToPost = [[NSMutableDictionary alloc]init];
+    [dictonaryToPost setObject:bloodSelected forKey:BLOODTYPE];
+    [dictonaryToPost setObject:[[NSNumber numberWithFloat:userLocation.coordinate.latitude] stringValue]  forKey:LATTITUDE];
+
+     [dictonaryToPost setObject:[[NSNumber numberWithFloat:userLocation.coordinate.longitude] stringValue]  forKey:LONGITUDE];
+  
+    //return dictonaryToPost;
+}
 
 
-
--(void)convertToJson {
+-(void)convertToJson:(NSDictionary *)dicitonaryToConvert {
     NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictonaryForInfo
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dicitonaryToConvert
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
     NSLog(@"%@",jsonData);
@@ -268,6 +299,7 @@ CLLocation *userLocation;
     NSLog(@"%@",aStr);
     
 }
+
 
 @end
 

@@ -2,11 +2,14 @@
 
 #import "DonorsDisplayViewController.h"
 
-
+#define LISTVIEW @"ListView"
+#define MAPVIEW @"MapView"
 
 @interface DonorsDisplayViewController ()
 {
- NSString *CellIdentifier;
+    ListView * listView;
+    MapView * mapView;
+
 }
 @end
 
@@ -14,34 +17,45 @@
 @synthesize segmentedController;
 @synthesize donorsArray;
 @synthesize userLocation;
-@synthesize listView;
+//@synthesize listView;
 @synthesize viewContainer;
-@synthesize mapView;
+//@synthesize mapView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = false;
-    NSLog(@"%@",self.navigationController);
+    
+    NSLog(@"navigation controller %@",self.navigationController);
     self.segmentedController.selectedSegmentIndex = 0;
     
-    listView = [[[NSBundle mainBundle] loadNibNamed:@"ListView" owner:self options:nil] lastObject];
-    mapView = [[[NSBundle mainBundle] loadNibNamed:@"MapView" owner:self options:nil] lastObject];
-    CellIdentifier = @"cell";
+    listView = [[[NSBundle mainBundle] loadNibNamed:LISTVIEW owner:self options:nil] lastObject];
+    mapView = [[[NSBundle mainBundle] loadNibNamed:MAPVIEW owner:self options:nil] lastObject];
+    //CellIdentifier = @"cell";
     listView.tableListForDonors.dataSource = self;
     listView.tableListForDonors.delegate =self;
     
      [listView.tableListForDonors registerNib:[UINib nibWithNibName:@"CustomTableViewCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
-    [self.viewContainer addSubview:self.listView];
+    [self.viewContainer addSubview:listView];
 
     [self mapSettings];
     
 }
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBarHidden = false;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+}
+
+#pragma mark :MAP settings
+
 -(void)mapSettings{
-    //CLLocationCoordinate2D position = CLLocationCoordinate2DMake(18.562622, 73.808723);
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:userLocation.coordinate.latitude
                                                             longitude:userLocation.coordinate.longitude
-                                                                 zoom:10];
+                                                                 zoom:11];
     mapView.mapView.myLocationEnabled = YES;
     mapView.mapView.mapType = kGMSTypeNormal;
     
@@ -53,35 +67,37 @@
     mapView.mapView.camera = camera;
 
 }
--(void)mapMarker:(CLLocation*)location{
-    NSLog(@"%@",location);
-    GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
-    NSLog(@"hhh");
-    NSLog(@"%f",location.coordinate.latitude);
-    marker.map = self.mapView.mapView;
-    marker.title = @"pune";
-    marker .snippet = @"Population: hello";
+
+-(void)mapMarker:(CLLocation*)location withName:(NSString *)title withPhoneNo:(NSString*)phoneNo{
+GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
+    
+    marker.map = mapView.mapView;
+    marker.title =  title;
+    marker .snippet = phoneNo;
     marker.infoWindowAnchor = CGPointMake(0.5, 0.5);
 
 }
-
-
-
-
--(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = true;
+- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Input alert!!"
+                                                                   message:@"Select image from "
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"DO you want to call " style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://8004664411"]];
+}];
+    
+    [alert addAction:defaultAction];
+[self presentViewController:alert animated:YES completion:nil];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
+#pragma mark : Table view
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
    
     return donorsArray.count;
-    // return 10;
+    
 }
 
 
@@ -102,7 +118,8 @@
     CLLocationDistance distance = [userLocation distanceFromLocation:donorLocation]/1000;
     //NSLog(@"%f",distance);
     cell.labelForDistance.text = [[NSNumber numberWithFloat:distance] stringValue];
-  [self mapMarker:donorLocation];
+    [self mapMarker:donorLocation withName:donor.name withPhoneNo:donor.phoneNo];
+  //[self mapMarker():donorLocation];
     return cell;
     
 }
@@ -113,17 +130,30 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"hello");
+   
 }
+
+#pragma mark  : alert
+
+-(void)alertMessageDisplay:(NSString *)title withMessage:(NSString *)message{
+    UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
+    [alertView show];
+}
+
+
+
+#pragma mark :Segmented controller
+
 
 - (IBAction)segmentControllerValuechanged:(UISegmentedControl *)sender {
     
     if (sender.selectedSegmentIndex == 0){
-        if([self.mapView isDescendantOfView:viewContainer])
-            [self.mapView removeFromSuperview];
-       // [self.listView translatesAutoresizingMaskIntoConstraints:false];
-        self.listView.translatesAutoresizingMaskIntoConstraints = false;
-        [self.viewContainer addSubview:self.listView];
+        if([mapView isDescendantOfView:viewContainer])
+            mapView.hidden = YES;
+      
+      listView.translatesAutoresizingMaskIntoConstraints = false;
+       listView.hidden = NO;
+        [self.viewContainer addSubview:listView];
         
         [self.viewContainer addConstraint:[NSLayoutConstraint constraintWithItem:listView
                                                                        attribute:NSLayoutAttributeLeading
@@ -161,11 +191,13 @@
     }
     
     else {
-         if([self.listView isDescendantOfView:viewContainer])
-             [self.listView removeFromSuperview];
-         //[self.mapView translatesAutoresizingMaskIntoConstraints:false];
-        self.mapView.translatesAutoresizingMaskIntoConstraints = false;
-        [self.viewContainer addSubview:self.mapView];
+         if([listView isDescendantOfView:viewContainer])
+             listView.hidden = YES;
+        
+        mapView.translatesAutoresizingMaskIntoConstraints = false;
+        mapView.hidden = NO;
+         NSLog(@"navigation controller %@",self.navigationController);
+        [self.viewContainer addSubview:mapView];
         [self.viewContainer addConstraint:[NSLayoutConstraint constraintWithItem:mapView
                                                                        attribute:NSLayoutAttributeLeading
                                                                        relatedBy:NSLayoutRelationEqual
@@ -197,15 +229,8 @@
                                                                        attribute:NSLayoutAttributeBottom
                                                                       multiplier:1.0
                                                                         constant:0.0]];
-//        [self.viewContainer addConstraint:[NSLayoutConstraint constraintWithItem:mapView
-//                                                                       attribute:NSLayoutAttributeHeight
-//                                                                       relatedBy:NSLayoutRelationEqual
-//                                                                          toItem:viewContainer
-//                                                                       attribute:NSLayoutAttributeHeight
-//                                                                      multiplier:0.5
-//                                                                        constant:200]];
-       // self.mapView.layoutConstraintMapView.constant = self.view.frame.size.height-500;
-        [self mapMarker:userLocation];
+
+        [self mapMarker:userLocation withName:@"YourLocation" withPhoneNo:@"Your PhoneNo"];
     }
     
 }

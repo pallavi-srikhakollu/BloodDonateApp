@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface HistoryListViewController : UIViewController
-
+#import "AddHistoryViewController.h"
+//extern NSMutableArray *arrayOfLocations;
+//extern NSMutableArray *arrayOfDates;
+@interface HistoryListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property NSMutableArray *arrayOfLocation;
+@property NSMutableArray *arrayOfDates;
 @end

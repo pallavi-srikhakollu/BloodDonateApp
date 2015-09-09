@@ -11,7 +11,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewContainer;
 @property  CLLocation *userLocation;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedController;
-@property ListView * listView;
-@property MapView * mapView;
+//@property ListView * listView;
+//@property MapView * mapView;
 @property NSMutableArray * donorsArray;
 @end
