@@ -1,26 +1,32 @@
 
 
 #import "HistoryListViewController.h"
+#define ADDETAILSVIEWCONTROLLER @"AddHistoryViewController"
+#define BARBUTTONTITLE @"Add"
 
 @interface HistoryListViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableViewForHistory;
+{
+
+ DBHelper *databaseHelper;
+    NSArray * fetchedObjectsFromDatabase;
+}
 
 @end
 
 @implementation HistoryListViewController
-//@synthesize arrayOfLocation;
-//@synthesize arrayOfDates;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.navigationController.navigationBarHidden = false;
+    [self databaseSetter];
+    
      [self intializeBarButton];
-//    arrayOfDates = [[NSMutableArray alloc]init];
-//    arrayOfLocations = [[NSMutableArray alloc]init];
-    // Do any additional setup after loading the view.
-}
--(void)viewWillAppear:(BOOL)animated{
 
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+fetchedObjectsFromDatabase =[databaseHelper fetchAll];
     [_tableViewForHistory reloadData];
 
 }
@@ -28,13 +34,33 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
    
-    // Dispose of any resources that can be recreated.
+    
 }
+
+#pragma mark: Database
+
+-(void)databaseSetter{
+    databaseHelper = [[DBHelper alloc]init];
+    databaseHelper.dbName = @"HistoryInfo";
+    
+    databaseHelper.context =[self managedObjectContext];
+    
+    
+}
+- (NSManagedObjectContext *)managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
+
 
 #pragma mark: barButton 
 
 -(void)intializeBarButton{
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc]initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(buttonActionAddDetails)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc]initWithTitle:BARBUTTONTITLE style:UIBarButtonItemStylePlain target:self action:@selector(buttonActionAddDetails)];
     self.navigationItem.rightBarButtonItem = addButton;
     
     
@@ -44,7 +70,10 @@
 
 - (void)buttonActionAddDetails {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:MAIN bundle:nil];
-    AddHistoryViewController *addHistoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"AddHistoryViewController"];
+    AddHistoryViewController *addHistoryViewController = [storyboard instantiateViewControllerWithIdentifier:ADDETAILSVIEWCONTROLLER];
+   
+
+    addHistoryViewController.idTobeInsertedAt = [fetchedObjectsFromDatabase count];
     [self.navigationController pushViewController:addHistoryViewController animated:YES];
 }
 
@@ -55,10 +84,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    return 10;
-//  return arrayOfLocations.count;
-
+    return fetchedObjectsFromDatabase.count;
+   
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -68,21 +95,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-   // NSString * location = [arrayOfLocation objectAtIndex:indexPath.row];
-    cell.textLabel.text = @"hii";
-//    cell.textLabel.text = [NSString stringWithFormat: @"Location: %@",  [arrayOfLocations objectAtIndex:indexPath.row]];
-//    cell.detailTextLabel.text = [NSString stringWithFormat: @"Date: %@",  [arrayOfDates objectAtIndex:indexPath.row]];
+    
+    cell.textLabel.text = [[fetchedObjectsFromDatabase objectAtIndex:indexPath.row ]valueForKey:@"location" ];
+   cell.detailTextLabel.text = [NSString stringWithFormat: @"Date: %@",  [[fetchedObjectsFromDatabase objectAtIndex:indexPath.row]valueForKey:@"date"]];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
 
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:MAIN bundle:nil];
-    AddHistoryViewController *addHistoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"AddHistoryViewController"];
-    [self .navigationController pushViewController:addHistoryViewController animated:YES];
-
-
+   
 }
 
 

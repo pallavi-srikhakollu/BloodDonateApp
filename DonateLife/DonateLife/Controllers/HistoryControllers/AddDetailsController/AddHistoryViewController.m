@@ -1,16 +1,14 @@
-//
-//  AddHistoryViewController.m
-//  DonateLife
-//
-//  Created by webonise on 09/09/15.
-//  Copyright (c) 2015 webonise. All rights reserved.
-//
+
 
 #import "AddHistoryViewController.h"
-
+#define NOIMAGE @"No Image"
+#define DATEFORMAT @"dd/MM/YY"
 @interface AddHistoryViewController ()
 {
  IBOutlet UITextField *textFieldLocation;
+    NSArray *fetchedListFromDatabase;
+    NSMutableDictionary *dictionaryToInsert;
+   
 }
 @end
 
@@ -19,8 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self intializeBarButton];
-   // _datePicker.datePickerMode = UIDatePickerModeDate;
-    // Do any additional setup after loading the view.
+    _datePicker.maximumDate = [NSDate date];
+   
 }
 -(void)viewWillAppear:(BOOL)animated{
 
@@ -38,20 +36,53 @@
     
 
 }
+#pragma mark : Database
+-(void)setDatabase{
 
 
+}
+- (NSManagedObjectContext *)managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
+
+
+
+
+#pragma mark : Add details Action
 - (void)buttonActionAddDetails {
+    [self dateFormatter];
+    DBHelper *databaseHelper = [[DBHelper alloc]init];
+    databaseHelper.dbName = @"HistoryInfo";
+    databaseHelper.context = [self managedObjectContext];
+    [self dicitonaryTosave];
+    [databaseHelper insertIntoTable:dictionaryToInsert];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)dicitonaryTosave{
+    _idTobeInsertedAt ++;
+    
+    dictionaryToInsert = [[NSMutableDictionary alloc]init];
+    [dictionaryToInsert setObject:textFieldLocation.text forKey:LOCATION];
+    [dictionaryToInsert setObject:[self dateFormatter] forKey:DATE];
+    [dictionaryToInsert setObject:[NSString stringWithFormat:@"%d", _idTobeInsertedAt] forKey:IDNO];
+    [dictionaryToInsert setObject:NOIMAGE forKey:CERTIFICATE];
+
+
+}
+-(NSString*)dateFormatter{
+
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/YY"];
+    [dateFormatter setDateFormat:DATEFORMAT];
     NSString *str = [dateFormatter stringFromDate:[_datePicker date]];
     NSLog(@"%@",str);
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:MAIN bundle:nil];
-//    HistoryListViewController *historyListViewController = [storyboard instantiateViewControllerWithIdentifier:@"HistoryListViewController"];
-//    [arrayOfLocations addObject : textFieldLocation];
-//    [arrayOfDates addObject:str];
-//    [arrayOfLocations addObject:textFieldLocation.text];
-//    [arrayOfDates addObject:str];
-    [self.navigationController popViewControllerAnimated:YES];
+    return str;
 }
 
 

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="g1b-aV-asD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Registration Page View Controller-->
@@ -46,7 +47,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Mobile Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8BN-m0-ChE">
                                                 <rect key="frame" x="41" y="248" width="256" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email Id" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pUf-Ni-FZu">
                                                 <rect key="frame" x="41" y="318" width="256" height="30"/>
@@ -141,8 +142,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kxt-vd-89p">
+                            <navigationBar contentMode="scaleToFill" backIndicatorImage="watermark_light.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kxt-vd-89p">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <color key="tintColor" red="0.045280632704559745" green="0.062054293345428377" blue="0.063328598484848508" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Title" id="dut-ed-emP">
                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="azl-nA-yng">
@@ -153,18 +159,19 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-28-Aio">
-                                <rect key="frame" x="136" y="200" width="49" height="30"/>
-                                <state key="normal" title="History">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonHistoryAction:" destination="50e-06-RRC" eventType="touchUpInside" id="HaV-Dm-nFH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pq5-cr-EBW">
-                                <rect key="frame" x="114" y="290" width="93" height="30"/>
-                                <state key="normal" title="Search Blood">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image-1" translatesAutoresizingMaskIntoConstraints="NO" id="tmK-bg-fWi">
+                                <rect key="frame" x="0.0" y="108" width="320" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="adz-13-IQI"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pq5-cr-EBW">
+                                <rect key="frame" x="16" y="369" width="288" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="A2A-mH-BnX"/>
+                                    <constraint firstAttribute="height" constant="40" id="V4W-M7-rap"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="Image-2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -172,34 +179,57 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SlD-cn-UaX">
-                                <rect key="frame" x="114" y="313" width="93" height="177"/>
+                                <rect key="frame" x="58" y="402" width="112" height="144"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="177" id="JMJ-wS-BYB"/>
-                                    <constraint firstAttribute="width" constant="93" id="jKM-Wm-2Zh"/>
+                                    <constraint firstAttribute="height" constant="144" id="JMJ-wS-BYB"/>
+                                    <constraint firstAttribute="width" constant="112" id="jKM-Wm-2Zh"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="50e-06-RRC" id="H6Y-Gh-Orj"/>
                                     <outlet property="delegate" destination="50e-06-RRC" id="T89-DO-rEW"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-28-Aio">
+                                <rect key="frame" x="16" y="307" width="277" height="39"/>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.78431372549019607" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="277" id="COc-bG-LEm"/>
+                                    <constraint firstAttribute="height" constant="39" id="NCJ-d7-BIT"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="Image-3">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonHistoryAction:" destination="50e-06-RRC" eventType="touchUpInside" id="HaV-Dm-nFH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="QeT-28-Aio" secondAttribute="centerX" id="5IB-GN-uE4"/>
+                            <constraint firstAttribute="trailing" secondItem="tmK-bg-fWi" secondAttribute="trailing" id="41h-fP-Zev"/>
+                            <constraint firstItem="QeT-28-Aio" firstAttribute="top" secondItem="hA2-7h-AGE" secondAttribute="bottom" constant="243" id="5PM-tK-OS8"/>
                             <constraint firstItem="Kxt-vd-89p" firstAttribute="leading" secondItem="PTy-iQ-9NY" secondAttribute="leading" id="AOD-Gk-aqs"/>
+                            <constraint firstItem="QeT-28-Aio" firstAttribute="leading" secondItem="PTy-iQ-9NY" secondAttribute="leadingMargin" id="Frv-6M-g2o"/>
+                            <constraint firstItem="pq5-cr-EBW" firstAttribute="top" secondItem="QeT-28-Aio" secondAttribute="bottom" constant="23" id="Gsz-CU-jxw"/>
                             <constraint firstItem="Kxt-vd-89p" firstAttribute="top" secondItem="hA2-7h-AGE" secondAttribute="bottom" id="Ih4-mC-L8N"/>
-                            <constraint firstItem="SlD-cn-UaX" firstAttribute="leading" secondItem="pq5-cr-EBW" secondAttribute="leading" id="XHT-Cr-t0X"/>
                             <constraint firstItem="SlD-cn-UaX" firstAttribute="top" secondItem="pq5-cr-EBW" secondAttribute="bottom" constant="-7" id="bJP-Yx-ecF"/>
                             <constraint firstAttribute="trailing" secondItem="Kxt-vd-89p" secondAttribute="trailing" id="d5t-qw-n7X"/>
-                            <constraint firstItem="QeT-28-Aio" firstAttribute="top" secondItem="Kxt-vd-89p" secondAttribute="bottom" constant="92" id="mxT-rC-cuE"/>
-                            <constraint firstItem="6h9-mH-ymJ" firstAttribute="top" secondItem="pq5-cr-EBW" secondAttribute="bottom" constant="248" id="pN0-w2-w4O"/>
+                            <constraint firstItem="pq5-cr-EBW" firstAttribute="leading" secondItem="QeT-28-Aio" secondAttribute="leading" id="gdk-R8-xr4"/>
+                            <constraint firstItem="tmK-bg-fWi" firstAttribute="leading" secondItem="PTy-iQ-9NY" secondAttribute="leading" id="j9A-yD-XfU"/>
+                            <constraint firstItem="SlD-cn-UaX" firstAttribute="leading" secondItem="PTy-iQ-9NY" secondAttribute="leadingMargin" constant="42" id="l2K-Ua-njS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QeT-28-Aio" secondAttribute="trailing" constant="11" id="p2n-jZ-byi"/>
+                            <constraint firstItem="tmK-bg-fWi" firstAttribute="top" secondItem="Kxt-vd-89p" secondAttribute="bottom" id="xXH-Cc-ypH"/>
                             <constraint firstAttribute="centerX" secondItem="pq5-cr-EBW" secondAttribute="centerX" id="xly-jr-p33"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="f3M-iA-DNU"/>
                     <connections>
                         <outlet property="layoutConstraintHeightForTable" destination="JMJ-wS-BYB" id="QiY-il-D0O"/>
+                        <outlet property="overlayView" destination="PTy-iQ-9NY" id="VR4-tJ-u6B"/>
                         <outlet property="tableViewBloodList" destination="SlD-cn-UaX" id="LSK-Cu-UXo"/>
                     </connections>
                 </viewController>
@@ -347,6 +377,9 @@
                                                 <date key="date" timeIntervalSinceReferenceDate="463469908.54490203">
                                                     <!--2015-09-09 05:38:28 +0000-->
                                                 </date>
+                                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167476400">
+                                                    <!--2037-12-30 11:00:00 +0000-->
+                                                </date>
                                             </datePicker>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -390,6 +423,12 @@
             <point key="canvasLocation" x="2977" y="-220"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Image-1" width="210" height="161"/>
+        <image name="Image-2" width="206" height="40"/>
+        <image name="Image-3" width="211" height="39"/>
+        <image name="watermark_light.png" width="56" height="21"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
