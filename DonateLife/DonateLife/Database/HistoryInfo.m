@@ -1,6 +1,6 @@
 
 #import "HistoryInfo.h"
-
+#import "DatabaseHelper/DBHelper.h"
 @implementation HistoryInfo
 -(instancetype)init{
     

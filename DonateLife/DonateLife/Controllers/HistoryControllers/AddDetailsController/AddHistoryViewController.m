@@ -5,10 +5,10 @@
 #define DATEFORMAT @"dd/MM/YY"
 @interface AddHistoryViewController ()
 {
- IBOutlet UITextField *textFieldLocation;
+    IBOutlet UITextField *textFieldLocation;
     NSArray *fetchedListFromDatabase;
     NSMutableDictionary *dictionaryToInsert;
-   
+    
 }
 @end
 
@@ -18,11 +18,13 @@
     [super viewDidLoad];
     [self intializeBarButton];
     _datePicker.maximumDate = [NSDate date];
-   
+    textFieldLocation.delegate = self;
+    
 }
+
 -(void)viewWillAppear:(BOOL)animated{
-
-
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,12 +36,12 @@
     self.navigationItem.rightBarButtonItem = addButton;
     
     
-
+    
 }
 #pragma mark : Database
 -(void)setDatabase{
-
-
+    
+    
 }
 - (NSManagedObjectContext *)managedObjectContext {
     NSManagedObjectContext *context = nil;
@@ -57,18 +59,18 @@
 - (void)buttonActionAddDetails {
     if([[self trimWhiteSpaces:(textFieldLocation.text)] isEqualToString:EMPTYSTRING])
     {
-        [self alertMessageDisplay:titleForEmpty withMessage:@""];
-
+        [self alertMessageDisplay:titleForEmpty withMessage:@"PleaseEnterLocation"];
+        
     }
     else{
-    [self dateFormatter];
-    DBHelper *databaseHelper = [[DBHelper alloc]init];
-    databaseHelper.dbName = @"HistoryInfo";
-    databaseHelper.context = [self managedObjectContext];
-    [self dicitonaryTosave];
-    [databaseHelper insertIntoTable:dictionaryToInsert];
-    
-    [self.navigationController popViewControllerAnimated:YES];
+        [self dateFormatter];
+        DBHelper *databaseHelper = [[DBHelper alloc]init];
+        databaseHelper.dbName = @"HistoryInfo";
+        databaseHelper.context = [self managedObjectContext];
+        [self dicitonaryTosave];
+        [databaseHelper insertIntoTable:dictionaryToInsert];
+        
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -80,11 +82,11 @@
     [dictionaryToInsert setObject:[self dateFormatter] forKey:DATE];
     [dictionaryToInsert setObject:[NSString stringWithFormat:@"%d", _idTobeInsertedAt] forKey:IDNO];
     [dictionaryToInsert setObject:NOIMAGE forKey:CERTIFICATE];
-
-
+    
+    
 }
 -(NSString*)dateFormatter{
-
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:DATEFORMAT];
     NSString *str = [dateFormatter stringFromDate:[_datePicker date]];
@@ -101,6 +103,11 @@
 -(void)alertMessageDisplay:(NSString *)title withMessage:(NSString *)message{
     UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
     [alertView show];
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

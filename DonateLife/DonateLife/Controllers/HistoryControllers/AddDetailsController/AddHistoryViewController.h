@@ -3,7 +3,7 @@
 #import "HistoryListViewController.h"
 #import "DBHelper.h"
 
-@interface AddHistoryViewController : UIViewController
+@interface AddHistoryViewController : UIViewController<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property  int idTobeInsertedAt;
  

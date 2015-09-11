@@ -66,8 +66,10 @@
                                                 <rect key="frame" x="238" y="385" width="51" height="31"/>
                                             </switch>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5oA-4d-9cH">
-                                                <rect key="frame" x="120" y="451" width="57" height="30"/>
-                                                <state key="normal" title="Register">
+                                                <rect key="frame" x="98" y="451" width="100" height="30"/>
+                                                <color key="backgroundColor" red="0.93333333330000001" green="0.2666666667" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="     Register     ">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -125,6 +127,7 @@
                     <navigationItem key="navigationItem" id="72j-7e-ohb"/>
                     <connections>
                         <outlet property="buttonForRegisterAndUpdate" destination="5oA-4d-9cH" id="3y1-ag-cUz"/>
+                        <outlet property="layoutConstarintScrollViewBottom" destination="HoH-ln-5eU" id="eWZ-wn-crE"/>
                         <outlet property="layoutConstraintBottomSpaceForScrollView" destination="Klg-S3-hJD" id="YhA-vu-rDZ"/>
                         <outlet property="pickerViewBloodTypes" destination="SoD-c3-avb" id="sTL-Jr-gRR"/>
                         <outlet property="switchForPrivacy" destination="jt7-8j-oxx" id="s4r-g1-6nj"/>
@@ -149,9 +152,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar alpha="0.84999999999999987" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxt-vd-89p">
+                            <navigationBar opaque="NO" alpha="0.84999999999999987" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxt-vd-89p">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="0.90588235294117647" green="0.23529411764705882" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -188,18 +191,6 @@
                                                     <action selector="buttonHistoryAction:" destination="50e-06-RRC" eventType="touchUpInside" id="HaV-Dm-nFH"/>
                                                 </connections>
                                             </button>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SlD-cn-UaX">
-                                                <rect key="frame" x="20" y="316" width="112" height="144"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="144" id="JMJ-wS-BYB"/>
-                                                    <constraint firstAttribute="width" constant="112" id="jKM-Wm-2Zh"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="50e-06-RRC" id="H6Y-Gh-Orj"/>
-                                                    <outlet property="delegate" destination="50e-06-RRC" id="T89-DO-rEW"/>
-                                                </connections>
-                                            </tableView>
                                             <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image-1" translatesAutoresizingMaskIntoConstraints="NO" id="tmK-bg-fWi">
                                                 <rect key="frame" x="0.0" y="36" width="320" height="160"/>
                                                 <constraints>
@@ -212,21 +203,33 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="V4W-M7-rap"/>
                                                 </constraints>
-                                                <state key="normal" title="Search Blood">
+                                                <state key="normal" title="Need Blood?">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="buttonSearchBloodAction:" destination="50e-06-RRC" eventType="touchUpInside" id="dzn-nd-TAq"/>
                                                 </connections>
                                             </button>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SlD-cn-UaX">
+                                                <rect key="frame" x="102" y="316" width="112" height="144"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="144" id="JMJ-wS-BYB"/>
+                                                    <constraint firstAttribute="width" constant="112" id="jKM-Wm-2Zh"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="50e-06-RRC" id="H6Y-Gh-Orj"/>
+                                                    <outlet property="delegate" destination="50e-06-RRC" id="T89-DO-rEW"/>
+                                                </connections>
+                                            </tableView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="QeT-28-Aio" firstAttribute="leading" secondItem="ulW-Jz-f8C" secondAttribute="leading" constant="20" id="01m-sS-0ZT"/>
+                                            <constraint firstAttribute="centerX" secondItem="SlD-cn-UaX" secondAttribute="centerX" constant="2" id="39b-z9-8gJ"/>
                                             <constraint firstAttribute="trailing" secondItem="QeT-28-Aio" secondAttribute="trailing" constant="23" id="BvF-tz-yTY"/>
                                             <constraint firstAttribute="trailing" secondItem="pq5-cr-EBW" secondAttribute="trailing" constant="23" id="CP5-EE-INr"/>
                                             <constraint firstItem="QeT-28-Aio" firstAttribute="top" secondItem="tmK-bg-fWi" secondAttribute="bottom" constant="9" id="EqG-on-eJb"/>
-                                            <constraint firstItem="SlD-cn-UaX" firstAttribute="leading" secondItem="ulW-Jz-f8C" secondAttribute="leading" constant="20" id="FRT-aD-C1n"/>
                                             <constraint firstItem="pq5-cr-EBW" firstAttribute="top" secondItem="QeT-28-Aio" secondAttribute="bottom" constant="24" id="KDO-1d-jBn"/>
                                             <constraint firstItem="tmK-bg-fWi" firstAttribute="leading" secondItem="ulW-Jz-f8C" secondAttribute="leading" id="QyE-yf-RMr"/>
                                             <constraint firstAttribute="bottom" secondItem="SlD-cn-UaX" secondAttribute="bottom" constant="100" id="hHC-f7-TSH"/>
@@ -303,14 +306,16 @@
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JmT-cW-uHz">
                                 <rect key="frame" x="0.0" y="20" width="320" height="29"/>
+                                <color key="backgroundColor" red="0.93333333330000001" green="0.2666666667" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="3yZ-As-HUC"/>
                                     <constraint firstAttribute="width" constant="320" id="HHp-6H-bvL"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="List"/>
+                                    <segment title="Map"/>
                                 </segments>
+                                <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="segmentControllerValuechanged:" destination="o9I-uu-I57" eventType="valueChanged" id="8gV-XY-Ilo"/>
                                 </connections>
@@ -411,17 +416,25 @@
                                                     <!--2037-12-30 11:00:00 +0000-->
                                                 </date>
                                             </datePicker>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donation Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTu-Aa-QKQ">
+                                                <rect key="frame" x="19" y="113" width="110" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="qpd-WO-kpG" secondAttribute="trailing" constant="19" id="0V6-Uy-vQL"/>
                                             <constraint firstItem="f5U-gp-X4M" firstAttribute="top" secondItem="w9u-rk-VXT" secondAttribute="top" constant="74" id="5Rn-ke-gI3"/>
+                                            <constraint firstItem="kTu-Aa-QKQ" firstAttribute="top" secondItem="f5U-gp-X4M" secondAttribute="bottom" constant="18" id="90D-q2-tbE"/>
                                             <constraint firstItem="qpd-WO-kpG" firstAttribute="leading" secondItem="f5U-gp-X4M" secondAttribute="trailing" constant="26" id="E2m-wc-p3k"/>
                                             <constraint firstAttribute="trailing" secondItem="A7h-0X-g1Y" secondAttribute="trailing" id="LNr-Qv-hrr"/>
                                             <constraint firstItem="A7h-0X-g1Y" firstAttribute="leading" secondItem="w9u-rk-VXT" secondAttribute="leading" id="Pvj-ga-Xk4"/>
                                             <constraint firstAttribute="bottom" secondItem="A7h-0X-g1Y" secondAttribute="bottom" constant="252" id="dMf-hl-XGE"/>
                                             <constraint firstItem="qpd-WO-kpG" firstAttribute="baseline" secondItem="f5U-gp-X4M" secondAttribute="baseline" constant="-1" id="dxe-M6-A9j"/>
                                             <constraint firstItem="A7h-0X-g1Y" firstAttribute="top" secondItem="f5U-gp-X4M" secondAttribute="bottom" constant="47" id="foj-3F-yp8"/>
+                                            <constraint firstItem="kTu-Aa-QKQ" firstAttribute="leading" secondItem="w9u-rk-VXT" secondAttribute="leading" constant="19" id="knO-eA-dsC"/>
                                             <constraint firstItem="f5U-gp-X4M" firstAttribute="leading" secondItem="w9u-rk-VXT" secondAttribute="leading" constant="13" id="nZY-xb-CXx"/>
                                         </constraints>
                                     </view>

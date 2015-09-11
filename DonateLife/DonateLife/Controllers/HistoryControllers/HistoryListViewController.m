@@ -6,8 +6,8 @@
 
 @interface HistoryListViewController ()
 {
-
- DBHelper *databaseHelper;
+    
+    DBHelper *databaseHelper;
     NSArray * fetchedObjectsFromDatabase;
 }
 
@@ -21,19 +21,19 @@
     self.navigationController.navigationBarHidden = false;
     [self databaseSetter];
     
-     [self intializeBarButton];
-
+    [self intializeBarButton];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-fetchedObjectsFromDatabase =[databaseHelper fetchAll];
+    fetchedObjectsFromDatabase =[databaseHelper fetchAll];
     [_tableViewForHistory reloadData];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-   
+    
     
 }
 
@@ -57,22 +57,21 @@ fetchedObjectsFromDatabase =[databaseHelper fetchAll];
 }
 
 
-#pragma mark: barButton 
+#pragma mark: barButton
 
 -(void)intializeBarButton{
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc]initWithTitle:BARBUTTONTITLE style:UIBarButtonItemStylePlain target:self action:@selector(buttonActionAddDetails)];
     self.navigationItem.rightBarButtonItem = addButton;
     
     
-    
 }
 
 
 - (void)buttonActionAddDetails {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:MAIN bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:MAIN bundle:nil];
     AddHistoryViewController *addHistoryViewController = [storyboard instantiateViewControllerWithIdentifier:ADDETAILSVIEWCONTROLLER];
-   
-
+    
+    
     addHistoryViewController.idTobeInsertedAt = [fetchedObjectsFromDatabase count];
     [self.navigationController pushViewController:addHistoryViewController animated:YES];
 }
@@ -85,7 +84,7 @@ fetchedObjectsFromDatabase =[databaseHelper fetchAll];
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return fetchedObjectsFromDatabase.count;
-   
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -93,20 +92,19 @@ fetchedObjectsFromDatabase =[databaseHelper fetchAll];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     
-    cell.textLabel.text = [[fetchedObjectsFromDatabase objectAtIndex:indexPath.row ]valueForKey:@"location" ];
-   cell.detailTextLabel.text = [NSString stringWithFormat: @"Date: %@",  [[fetchedObjectsFromDatabase objectAtIndex:indexPath.row]valueForKey:@"date"]];
+    cell.textLabel.text = [[fetchedObjectsFromDatabase objectAtIndex:indexPath.row ]valueForKey:LOCATION ];
+    cell.detailTextLabel.text = [NSString stringWithFormat: @"Date: %@",  [[fetchedObjectsFromDatabase objectAtIndex:indexPath.row]valueForKey:DATE]];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
-
-   
+    
+    
+    
 }
-
 
 
 

@@ -144,6 +144,11 @@
     if(![tableViewForSettings isDescendantOfView:self.view]) {
         tableViewForSettings=[[UITableView alloc]init];
         tableViewForSettings.frame = CGRectMake(35,30,120,80);
+        //[tableViewForSettings setTintColor:]
+        [tableViewForSettings setTintColor:[UIColor colorWithRed:190.0/255.0 green:19.0/255.0 blue:35.0/255.0 alpha:0.8]];
+
+       // [tableViewForSettings setbackgroundColor:] = [UIColor colorWithRed:190.0/255.0 green:19.0/255.0 blue:35.0/255.0 alpha:0.8];
+
         
         tableViewForSettings.dataSource= self;
         tableViewForSettings.delegate=self;
@@ -215,7 +220,8 @@
     if(tableView == tableViewForSettings){
         UITableViewCell *cell = [[UITableViewCell alloc]init] ;
         cell.textLabel.text = [SETTINGLIST objectAtIndex:indexPath.row];
-        cell.backgroundColor = [UIColor colorWithRed:77.0/255.0f green:104.0/255.0f blue:159.0/255.0f alpha:1.0];  ;
+        cell.backgroundColor =  [UIColor colorWithRed:190.0/255.0 green:19.0/255.0 blue:35.0/255.0 alpha:0.6];
+ 
         
         return cell;
     }

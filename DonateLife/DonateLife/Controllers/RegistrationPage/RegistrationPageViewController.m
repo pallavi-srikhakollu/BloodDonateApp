@@ -11,57 +11,69 @@
 
 @interface RegistrationPageViewController ()
 {
+    IBOutlet UIButton *buttonForRegisterAndUpdate;
+    IBOutlet UITextField *textFieldName;
+    IBOutlet UIPickerView *pickerViewBloodTypes;
+    IBOutlet UITextField *textFieldMobileNo;
+    IBOutlet UITextField *textFieldEmailId;
     NSInteger selectedRowAtPicker;
     NSString *privacy;
     NSUserDefaults *defaults;
-  IBOutlet UIButton *buttonForRegisterAndUpdate;
-     IBOutlet UITextField *textFieldName;
-  IBOutlet UIPickerView *pickerViewBloodTypes;
-     IBOutlet UITextField *textFieldMobileNo;
-   IBOutlet UITextField *textFieldEmailId;
     NSMutableDictionary * dictonaryToPost;
     CLLocationManager *locationManager;
     float keyboardHeight;
-  //  CLLocation *userLocation;
-
-
+    
+    
 }
 @end
 
 @implementation RegistrationPageViewController
 
-//@synthesize bloodTypes ;
 @synthesize userLocation;
 
 - (void)viewDidLoad {
-     [super viewDidLoad];
+    [super viewDidLoad];
     defaults =  [NSUserDefaults standardUserDefaults];
-      self.navigationController.navigationBarHidden = true;
-   
-    textFieldName.delegate = self;
-    textFieldMobileNo.delegate =self;
-    textFieldEmailId.delegate = self;
-    [self gettingCurrentLocation];
-   //    [self gettingCurrentLocation];
-    if(_registerOrUpdate == YES)
-    {
-        [self updateScreen];
-    }
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [self setViewWithCustomSetting];
     
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 -(void)viewWillAppear:(BOOL)animated{
+    
+}
+
+
+#pragma mark:View settings
+
+-(void)setViewWithCustomSetting{
+    self.navigationController.navigationBarHidden = true;
+    
+    [self gettingCurrentLocation];
+    
+    if(_registerOrUpdate == YES)
+    {
+        [self updateScreen];
+    }
+    [self setkeyBoardNotification];
+    
+}
+
+#pragma mark:KeyBoard notification
+-(void)setkeyBoardNotification{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+#pragma mark: TextFeildDelegate
+-(void)setTextFieldDelegates{
+    textFieldName.delegate = self;
+    textFieldMobileNo.delegate =self;
+    textFieldEmailId.delegate = self;
 }
 
 #pragma mark : Custom functions
@@ -73,16 +85,16 @@
     
     return inputString;
 }
-    
+
 -(void)alertMessageDisplay:(NSString *)title withMessage:(NSString *)message{
-UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
-  [alertView show];
+    UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
+    [alertView show];
 }
 
 -(void)updateScreen{
-
+    
     self.navigationController.navigationBarHidden = false;
-   
+    
     [buttonForRegisterAndUpdate setTitle:UPDATE forState:UIControlStateNormal];
     
     textFieldName.text = [[defaults dictionaryRepresentation] valueForKey:NAME];
@@ -99,11 +111,6 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
     [self DicitonaryFormation];
     [self convertToJson:dictonaryToPost];
 }
-    
-
-
-
-
 
 
 #pragma mark : ButtonActions
@@ -111,9 +118,9 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
 
 - (IBAction)buttonActionRegister:(id)sender {
     if([[self trimWhiteSpaces:(textFieldName.text)] isEqualToString:EMPTYSTRING]) {
-    
+        
         [self alertMessageDisplay:titleForEmpty withMessage:MESSAGEFOREMPTYNAMEFEILD];
-    
+        
     }
     else if([[self trimWhiteSpaces:(textFieldMobileNo.text)] isEqualToString:EMPTYSTRING] || (textFieldMobileNo.text.length <10) || (textFieldMobileNo.text.length >10) ) {
         
@@ -121,22 +128,17 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
         
     }
     else if([[self trimWhiteSpaces:(textFieldEmailId.text)] isEqualToString:EMPTYSTRING] || ([self validateEmailWithString:(textFieldEmailId.text)] == 0)) {
-    
+        
         [self alertMessageDisplay:titleForEmpty withMessage:MESSAGEFOREMPTYEMAILIDFEILD];
         
     }
     else{
-    
-    
-   // NSLog(@"%d",_switchForPrivacy.on);
-  
+        
         if(_switchForPrivacy.on == 1){
             privacy = ON;
         }
         else{
-        
             privacy = OFF;
-
         }
         
         if([CLLocationManager locationServicesEnabled] &&
@@ -152,13 +154,11 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
         else {
             //NSLog(@"disllowed gps");
             [self alertMessageDisplay:ERRORFORLOCATION withMessage:ALERTMESSAGEFORLOCATIONERROR];
-
         }
-        
-        
-       UIStoryboard *storyboard = [UIStoryboard storyboardWithName:MAIN bundle:nil];
+
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:MAIN bundle:nil];
         FrontViewController *front = [storyboard instantiateViewControllerWithIdentifier:FRONTVIEWCONTROLLER];
-      
+        
         [self.navigationController pushViewController:front animated:NO];
     }
     
@@ -181,9 +181,6 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
     [defaults setObject:privacy forKey:PRIVACY];
     [defaults setObject:REGISTERED forKey:USER];
     [defaults synchronize];
-    
-
-
 }
 
 
@@ -191,14 +188,13 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
-    
-    
 }
 
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     return BLOODTYPES.count;
 }
+
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     
     return [BLOODTYPES objectAtIndex:row];
@@ -263,7 +259,7 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
     [dictonaryToPost setObject:[[NSNumber numberWithFloat:userLocation.coordinate.longitude] stringValue]  forKey:LONGITUDE];
     [dictonaryToPost setObject:user forKey:USER];
     
-   
+    
 }
 
 #pragma mark : email validation
@@ -281,16 +277,17 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
 #pragma mark : Keyboard functions
 
 -(void)keyboardWasShown:(NSNotification *)notification{
-   
+    
     NSDictionary *keyboardInfo = [notification userInfo];
     CGSize keyboardSize = [[keyboardInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-     keyboardHeight = keyboardSize.height;
-    _layoutConstraintBottomSpaceForScrollView.constant = _layoutConstraintBottomSpaceForScrollView.constant + keyboardHeight;
-   
+    keyboardHeight = keyboardSize.height;
+    _layoutConstarintScrollViewBottom .constant = _layoutConstarintScrollViewBottom.constant + keyboardHeight;
     
 }
--(void)keyboardWillHide:(NSNotification *)notification{
-      _layoutConstraintBottomSpaceForScrollView.constant = _layoutConstraintBottomSpaceForScrollView.constant - keyboardHeight;
 
+
+-(void)keyboardWillHide:(NSNotification *)notification{
+    _layoutConstarintScrollViewBottom .constant = _layoutConstarintScrollViewBottom.constant - keyboardHeight;
+    
 }
 @end
