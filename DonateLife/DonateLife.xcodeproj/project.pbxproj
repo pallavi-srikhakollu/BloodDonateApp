@@ -12,7 +12,6 @@
 		F19C58031B9D9B31008D750C /* Donor.m in Sources */ = {isa = PBXBuildFile; fileRef = F19C58021B9D9B31008D750C /* Donor.m */; };
 		F19C58061B9D9C1A008D750C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19C58051B9D9C1A008D750C /* Default-568h@2x.png */; };
 		F19C580B1B9DAE66008D750C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F19C580A1B9DAE66008D750C /* AppDelegate.m */; };
-		F19C580F1B9DAFCE008D750C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F19C580E1B9DAFCE008D750C /* Info.plist */; };
 		F19E44191B98602E0080ACC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F19E44171B98602E0080ACC8 /* Main.storyboard */; };
 		F19E441B1B98602E0080ACC8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F19E441A1B98602E0080ACC8 /* Images.xcassets */; };
 		F19E441E1B98602E0080ACC8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19E441C1B98602E0080ACC8 /* LaunchScreen.xib */; };
@@ -41,6 +40,11 @@
 		F1ED266C1B99857A00C2CB4F /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1ED26511B99842C00C2CB4F /* CoreText.framework */; };
 		F1ED266D1B99858400C2CB4F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1ED264F1B99842100C2CB4F /* CoreLocation.framework */; };
 		F1ED266E1B99859800C2CB4F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1ED264D1B99841800C2CB4F /* CoreData.framework */; };
+		F1ED72871B9FFD980081E07E /* AddHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1ED72861B9FFD980081E07E /* AddHistoryViewController.m */; };
+		F1F4373A1BA160E9008E1AD6 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1F437381BA160E9008E1AD6 /* Database.xcdatamodeld */; };
+		F1F4373E1BA16170008E1AD6 /* HistoryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F4373D1BA16170008E1AD6 /* HistoryInfo.m */; };
+		F1F4C40B1BA2BA6C00871B3C /* ScrollViewEventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F4C40A1BA2BA6C00871B3C /* ScrollViewEventHandler.m */; };
+		F1F4C40F1BA2D45000871B3C /* DBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F4C40E1BA2D45000871B3C /* DBHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +96,16 @@
 		F1ED265D1B99847400C2CB4F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		F1ED265F1B99847E00C2CB4F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F1ED26611B99848900C2CB4F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F1ED72851B9FFD980081E07E /* AddHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddHistoryViewController.h; path = Controllers/HistoryControllers/AddDetailsController/AddHistoryViewController.h; sourceTree = "<group>"; };
+		F1ED72861B9FFD980081E07E /* AddHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddHistoryViewController.m; path = Controllers/HistoryControllers/AddDetailsController/AddHistoryViewController.m; sourceTree = "<group>"; };
+		F1F437391BA160E9008E1AD6 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
+		F1F4373C1BA16170008E1AD6 /* HistoryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryInfo.h; path = DonateLife/Database/HistoryInfo.h; sourceTree = SOURCE_ROOT; };
+		F1F4373D1BA16170008E1AD6 /* HistoryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryInfo.m; path = DonateLife/Database/HistoryInfo.m; sourceTree = SOURCE_ROOT; };
+		F1F437421BA18107008E1AD6 /* KeysForDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KeysForDatabase.h; path = "Common Files/ConstantsFile/KeysForDatabase.h"; sourceTree = "<group>"; };
+		F1F4C4091BA2BA6C00871B3C /* ScrollViewEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollViewEventHandler.h; path = SupportingFiles/ScrollViewEventHandler.h; sourceTree = "<group>"; };
+		F1F4C40A1BA2BA6C00871B3C /* ScrollViewEventHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollViewEventHandler.m; path = SupportingFiles/ScrollViewEventHandler.m; sourceTree = "<group>"; };
+		F1F4C40E1BA2D45000871B3C /* DBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBHelper.m; path = ../Database/DatabaseHelper/DBHelper.m; sourceTree = "<group>"; };
+		F1F4C4101BA2D46200871B3C /* DBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBHelper.h; path = ../Database/DatabaseHelper/DBHelper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +135,8 @@
 		F19C58041B9D9B3D008D750C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F1F4373D1BA16170008E1AD6 /* HistoryInfo.m */,
+				F1F4373C1BA16170008E1AD6 /* HistoryInfo.h */,
 				F19C58011B9D9B31008D750C /* Donor.h */,
 				F19C58021B9D9B31008D750C /* Donor.m */,
 			);
@@ -150,6 +166,7 @@
 		F19E440C1B98602E0080ACC8 /* DonateLife */ = {
 			isa = PBXGroup;
 			children = (
+				F1F4373B1BA16142008E1AD6 /* Database */,
 				F19C58041B9D9B3D008D750C /* Models */,
 				F19E44331B9862B80080ACC8 /* Common Files */,
 				F19E443A1B9895A50080ACC8 /* Controllers */,
@@ -178,6 +195,7 @@
 				F19C58071B9D9D7C008D750C /* PrefixHeader.pch */,
 				F19E44171B98602E0080ACC8 /* Main.storyboard */,
 				F1EC8FD71B9EEF6D00CC06EA /* CommonKeys.h */,
+				F1F437421BA18107008E1AD6 /* KeysForDatabase.h */,
 			);
 			name = "Common Files";
 			sourceTree = "<group>";
@@ -239,6 +257,7 @@
 			children = (
 				F1EC8FD91B9EFD8300CC06EA /* FrontViewController.h */,
 				F1EC8FDA1B9EFD8300CC06EA /* FrontViewController.m */,
+				F1F4C40C1BA2BC1300871B3C /* ScrollViewController */,
 			);
 			name = FrontPage;
 			sourceTree = "<group>";
@@ -257,6 +276,7 @@
 			children = (
 				F19C57F11B9D4B31008D750C /* HistoryListViewController.h */,
 				F19C57F21B9D4B31008D750C /* HistoryListViewController.m */,
+				F1ED72881B9FFDA40081E07E /* AddHistory */,
 				F1EC8FF81B9F0D2200CC06EA /* CustomCell */,
 			);
 			name = HistoryPage;
@@ -301,6 +321,35 @@
 				F1EC8FCD1B9EEB7900CC06EA /* Map */,
 			);
 			name = SegmentViews;
+			sourceTree = "<group>";
+		};
+		F1ED72881B9FFDA40081E07E /* AddHistory */ = {
+			isa = PBXGroup;
+			children = (
+				F1ED72851B9FFD980081E07E /* AddHistoryViewController.h */,
+				F1ED72861B9FFD980081E07E /* AddHistoryViewController.m */,
+			);
+			name = AddHistory;
+			sourceTree = "<group>";
+		};
+		F1F4373B1BA16142008E1AD6 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				F1F4C4101BA2D46200871B3C /* DBHelper.h */,
+				F1F4C40E1BA2D45000871B3C /* DBHelper.m */,
+				F1F437381BA160E9008E1AD6 /* Database.xcdatamodeld */,
+			);
+			name = Database;
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		F1F4C40C1BA2BC1300871B3C /* ScrollViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1F4C4091BA2BA6C00871B3C /* ScrollViewEventHandler.h */,
+				F1F4C40A1BA2BA6C00871B3C /* ScrollViewEventHandler.m */,
+			);
+			name = ScrollViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,7 +414,6 @@
 				F19E44191B98602E0080ACC8 /* Main.storyboard in Resources */,
 				F19C58061B9D9C1A008D750C /* Default-568h@2x.png in Resources */,
 				F1EC8FE81B9F007F00CC06EA /* ListView.xib in Resources */,
-				F19C580F1B9DAFCE008D750C /* Info.plist in Resources */,
 				F1EC8FED1B9F009900CC06EA /* CustomTableViewCell.xib in Resources */,
 				F1ED264A1B99834F00C2CB4F /* GoogleMaps.bundle in Resources */,
 				F19E441E1B98602E0080ACC8 /* LaunchScreen.xib in Resources */,
@@ -386,10 +434,15 @@
 				F1EC8FDB1B9EFD8300CC06EA /* FrontViewController.m in Sources */,
 				F19C58031B9D9B31008D750C /* Donor.m in Sources */,
 				F19C57F31B9D4B31008D750C /* HistoryListViewController.m in Sources */,
+				F1F4373E1BA16170008E1AD6 /* HistoryInfo.m in Sources */,
 				F1EC8FE71B9F007F00CC06EA /* ListView.m in Sources */,
+				F1ED72871B9FFD980081E07E /* AddHistoryViewController.m in Sources */,
 				F1EC8FF61B9F0D1900CC06EA /* HistoryCustomTableViewCell.m in Sources */,
 				F1EC8FEC1B9F009900CC06EA /* CustomTableViewCell.m in Sources */,
+				F1F4C40F1BA2D45000871B3C /* DBHelper.m in Sources */,
 				F1EC8FD61B9EEDBC00CC06EA /* RegistrationPageViewController.m in Sources */,
+				F1F4C40B1BA2BA6C00871B3C /* ScrollViewEventHandler.m in Sources */,
+				F1F4373A1BA160E9008E1AD6 /* Database.xcdatamodeld in Sources */,
 				F1EC8FF11B9F00B100CC06EA /* MapView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,7 +486,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Webonise software solutions pvt ltd (BWEH7ZFV8B)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -454,11 +507,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				New_Setting = "";
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				PROVISIONING_PROFILE = "4c9aeff0-68f6-47ec-979c-9cbf35bdadad";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -480,7 +534,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Webonise software solutions pvt ltd (BWEH7ZFV8B)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -494,9 +548,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				New_Setting = "";
+				PROVISIONING_PROFILE = "4c9aeff0-68f6-47ec-979c-9cbf35bdadad";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -513,6 +568,7 @@
 				INFOPLIST_FILE = DonateLife/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4c9aeff0-68f6-47ec-979c-9cbf35bdadad";
 			};
 			name = Debug;
 		};
@@ -524,9 +580,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DonateLife/Framework",
 				);
-				INFOPLIST_FILE = DonateLife/Info.plist;
+				INFOPLIST_FILE = DonateLife/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4c9aeff0-68f6-47ec-979c-9cbf35bdadad";
 			};
 			name = Release;
 		};
@@ -552,6 +609,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F1F437381BA160E9008E1AD6 /* Database.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F1F437391BA160E9008E1AD6 /* Database.xcdatamodel */,
+			);
+			currentVersion = F1F437391BA160E9008E1AD6 /* Database.xcdatamodel */;
+			name = Database.xcdatamodeld;
+			path = ../Database/Database.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F19E44021B98602E0080ACC8 /* Project object */;
 }

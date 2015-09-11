@@ -9,7 +9,7 @@
 {
     ListView * listView;
     MapView * mapView;
-
+   
 }
 @end
 
@@ -24,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = false;
+//    [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithCGColor:#FF132F]];
+//                                                      colorWithRed:<#(CGFloat)#> green:<#(CGFloat)#> blue:<#(CGFloat)#> alpha:<#(CGFloat)#> ];
     
     NSLog(@"navigation controller %@",self.navigationController);
     self.segmentedController.selectedSegmentIndex = 0;
@@ -79,16 +81,25 @@ GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
 }
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
     
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Input alert!!"
-                                                                   message:@"Select image from "
-                                                            preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"DO you want to call " style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {NSLog(@"Hello");}];
     
-    [alert addAction:defaultAction];
-[self presentViewController:alert animated:YES completion:nil];
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"call alert!!"
+                                                                   message:@"DO you want to call ? "
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction* callAction = [UIAlertAction actionWithTitle:@"call" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {[[UIApplication sharedApplication] openURL:[NSURL URLWithString:marker.snippet]];
+                                                          }];
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [alert removeFromParentViewController];
+                                                          }];
+
+
+    [alert addAction:callAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
     
 }
+
 
 
 #pragma mark : Table view
@@ -101,11 +112,13 @@ GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     CustomTableViewCell *cell;
     
     if (cell == nil) {
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     }
+    
     Donor *donor = [[Donor alloc]init];
     donor = [donorsArray objectAtIndex:indexPath.row];
     cell.labelForName.text = donor.name;
@@ -113,13 +126,9 @@ GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
      [cell.buttonForContact setTitle:donor.phoneNo forState:UIControlStateNormal];
     CLLocation *donorLocation = [[CLLocation alloc] initWithLatitude:donor.lattitude longitude:donor.longitude];
  
-   
-    CLLocationDistance distance = [userLocation distanceFromLocation:donorLocation]/1000;
-    //NSLog(@"%f",distance);
-    cell.labelForDistance.text = [[NSNumber numberWithFloat:distance] stringValue];
+    cell.labelForDistance.text = [[NSNumber numberWithFloat:[userLocation distanceFromLocation:donorLocation]/1000] stringValue];
     [self mapMarker:donorLocation withName:donor.name withPhoneNo:donor.phoneNo];
-  //[self mapMarker():donorLocation];
-    return cell;
+     return cell;
     
 }
 
@@ -229,10 +238,11 @@ GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
                                                                       multiplier:1.0
                                                                         constant:0.0]];
 
-        [self mapMarker:userLocation withName:@"YourLocation" withPhoneNo:@"Your PhoneNo"];
+        //[self mapMarker:userLocation withName:@"YourLocation" withPhoneNo:@"Your PhoneNo"];
     }
     
 }
+
 
 
 @end
