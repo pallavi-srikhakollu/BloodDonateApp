@@ -6,7 +6,7 @@
 #import "HistoryListViewController.h"
 
 @interface FrontViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>
-@property (strong, nonatomic) IBOutlet UIView *overlayView;
+//@property (strong, nonatomic) IBOutlet UIView *overlayView;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableViewBloodList;
 @property DonorsDisplayViewController *donorsDisplayViewController;

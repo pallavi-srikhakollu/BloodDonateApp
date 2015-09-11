@@ -44,7 +44,8 @@
 		F1ED72871B9FFD980081E07E /* AddHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1ED72861B9FFD980081E07E /* AddHistoryViewController.m */; };
 		F1F4373A1BA160E9008E1AD6 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1F437381BA160E9008E1AD6 /* Database.xcdatamodeld */; };
 		F1F4373E1BA16170008E1AD6 /* HistoryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F4373D1BA16170008E1AD6 /* HistoryInfo.m */; };
-		F1F437411BA16265008E1AD6 /* DBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F437401BA16265008E1AD6 /* DBHelper.m */; };
+		F1F4C40B1BA2BA6C00871B3C /* ScrollViewEventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F4C40A1BA2BA6C00871B3C /* ScrollViewEventHandler.m */; };
+		F1F4C40F1BA2D45000871B3C /* DBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F4C40E1BA2D45000871B3C /* DBHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,9 +103,11 @@
 		F1F437391BA160E9008E1AD6 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		F1F4373C1BA16170008E1AD6 /* HistoryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryInfo.h; path = DonateLife/Database/HistoryInfo.h; sourceTree = SOURCE_ROOT; };
 		F1F4373D1BA16170008E1AD6 /* HistoryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryInfo.m; path = DonateLife/Database/HistoryInfo.m; sourceTree = SOURCE_ROOT; };
-		F1F4373F1BA16265008E1AD6 /* DBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBHelper.h; path = ../../../../../Downloads/DBHelper.h; sourceTree = "<group>"; };
-		F1F437401BA16265008E1AD6 /* DBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBHelper.m; path = ../../../../../Downloads/DBHelper.m; sourceTree = "<group>"; };
 		F1F437421BA18107008E1AD6 /* KeysForDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KeysForDatabase.h; path = "Common Files/ConstantsFile/KeysForDatabase.h"; sourceTree = "<group>"; };
+		F1F4C4091BA2BA6C00871B3C /* ScrollViewEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollViewEventHandler.h; path = SupportingFiles/ScrollViewEventHandler.h; sourceTree = "<group>"; };
+		F1F4C40A1BA2BA6C00871B3C /* ScrollViewEventHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollViewEventHandler.m; path = SupportingFiles/ScrollViewEventHandler.m; sourceTree = "<group>"; };
+		F1F4C40E1BA2D45000871B3C /* DBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBHelper.m; path = ../Database/DatabaseHelper/DBHelper.m; sourceTree = "<group>"; };
+		F1F4C4101BA2D46200871B3C /* DBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBHelper.h; path = ../Database/DatabaseHelper/DBHelper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +137,8 @@
 		F19C58041B9D9B3D008D750C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F1F4373D1BA16170008E1AD6 /* HistoryInfo.m */,
+				F1F4373C1BA16170008E1AD6 /* HistoryInfo.h */,
 				F19C58011B9D9B31008D750C /* Donor.h */,
 				F19C58021B9D9B31008D750C /* Donor.m */,
 			);
@@ -255,6 +260,7 @@
 			children = (
 				F1EC8FD91B9EFD8300CC06EA /* FrontViewController.h */,
 				F1EC8FDA1B9EFD8300CC06EA /* FrontViewController.m */,
+				F1F4C40C1BA2BC1300871B3C /* ScrollViewController */,
 			);
 			name = FrontPage;
 			sourceTree = "<group>";
@@ -332,14 +338,21 @@
 		F1F4373B1BA16142008E1AD6 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				F1F4373F1BA16265008E1AD6 /* DBHelper.h */,
-				F1F437401BA16265008E1AD6 /* DBHelper.m */,
+				F1F4C4101BA2D46200871B3C /* DBHelper.h */,
+				F1F4C40E1BA2D45000871B3C /* DBHelper.m */,
 				F1F437381BA160E9008E1AD6 /* Database.xcdatamodeld */,
-				F1F4373C1BA16170008E1AD6 /* HistoryInfo.h */,
-				F1F4373D1BA16170008E1AD6 /* HistoryInfo.m */,
 			);
 			name = Database;
 			path = Framework;
+			sourceTree = "<group>";
+		};
+		F1F4C40C1BA2BC1300871B3C /* ScrollViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1F4C4091BA2BA6C00871B3C /* ScrollViewEventHandler.h */,
+				F1F4C40A1BA2BA6C00871B3C /* ScrollViewEventHandler.m */,
+			);
+			name = ScrollViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,8 +443,9 @@
 				F1ED72871B9FFD980081E07E /* AddHistoryViewController.m in Sources */,
 				F1EC8FF61B9F0D1900CC06EA /* HistoryCustomTableViewCell.m in Sources */,
 				F1EC8FEC1B9F009900CC06EA /* CustomTableViewCell.m in Sources */,
-				F1F437411BA16265008E1AD6 /* DBHelper.m in Sources */,
+				F1F4C40F1BA2D45000871B3C /* DBHelper.m in Sources */,
 				F1EC8FD61B9EEDBC00CC06EA /* RegistrationPageViewController.m in Sources */,
+				F1F4C40B1BA2BA6C00871B3C /* ScrollViewEventHandler.m in Sources */,
 				F1F4373A1BA160E9008E1AD6 /* Database.xcdatamodeld in Sources */,
 				F1EC8FF11B9F00B100CC06EA /* MapView.m in Sources */,
 			);

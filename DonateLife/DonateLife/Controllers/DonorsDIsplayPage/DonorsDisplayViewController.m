@@ -24,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = false;
+//    [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithCGColor:#FF132F]];
+//                                                      colorWithRed:<#(CGFloat)#> green:<#(CGFloat)#> blue:<#(CGFloat)#> alpha:<#(CGFloat)#> ];
     
     NSLog(@"navigation controller %@",self.navigationController);
     self.segmentedController.selectedSegmentIndex = 0;

@@ -17,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
      [GMSServices provideAPIKey:@"AIzaSyA8RsxR30ti94oa7XaCnH79dgxQXB0k078"];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:190.0/255.0 green:19.0/255.0 blue:35.0/255.0 alpha:0.8]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     return YES;
 }

@@ -37,6 +37,7 @@
      [super viewDidLoad];
     defaults =  [NSUserDefaults standardUserDefaults];
       self.navigationController.navigationBarHidden = true;
+   
     textFieldName.delegate = self;
     textFieldMobileNo.delegate =self;
     textFieldEmailId.delegate = self;
@@ -81,6 +82,7 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
 -(void)updateScreen{
 
     self.navigationController.navigationBarHidden = false;
+   
     [buttonForRegisterAndUpdate setTitle:UPDATE forState:UIControlStateNormal];
     
     textFieldName.text = [[defaults dictionaryRepresentation] valueForKey:NAME];

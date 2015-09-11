@@ -111,6 +111,7 @@
     self.navigationController.navigationBarHidden = true;
     layoutConstraintHeightForTable.constant = 0;
     
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -274,7 +275,8 @@
     
     else{
     
- [self activityIndicatorIntailser];
+ //[self activityIndicatorIntailser];
+        
     layoutConstraintHeightForTable.constant = 0;
     DonorsDisplayViewController *donorsDisplayViewController1 = [storyboard instantiateViewControllerWithIdentifier:DONORDISPLAYVIEWCONTROLLER];
     
@@ -327,7 +329,9 @@
     NSString* jsonInStringForm;
     jsonInStringForm = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     //NSLog(@"%@",aStr);
-    [activityIndicator startAnimating];
+    [activityIndicator stopAnimating];
+    [activityIndicator removeFromSuperview];
+   //[self.overlayView removeFromSuperview];
     
 }
 
@@ -361,17 +365,17 @@
 
 #pragma  mark : activityIndicator
 
--(void)activityIndicatorIntailser{
-    self.overlayView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.overlayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    activityIndicator.center = self.overlayView.center;
-    [self.overlayView addSubview:activityIndicator];
-    [activityIndicator startAnimating];
-    [self.view addSubview:self.overlayView];
-    
-
-}
+//-(void)activityIndicatorIntailser{
+////    self.overlayView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+////    self.overlayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+//    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+////    activityIndicator.center = self.overlayView.center;
+////    [self.overlayView addSubview:activityIndicator];
+////    [activityIndicator startAnimating];
+////    [self.view addSubview:self.overlayView];
+//    
+//
+//}
 
 #pragma mark : AlertView
 -(void)alertMessageDisplay:(NSString *)title withMessage:(NSString *)message{
