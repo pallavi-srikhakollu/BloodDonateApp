@@ -1,0 +1,10 @@
+
+#ifndef DonateLife_PrefixHeader_pch
+#define DonateLife_PrefixHeader_pch
+
+#import <CoreLocation/CoreLocation.h>
+#import "Donor.h"
+#import "ConstantsFile/CommonConstants.h"
+#import "ConstantsFile/CommonKeys.h"
+#import "ConstantsFile/KeysForDatabase.h"
+#endif
