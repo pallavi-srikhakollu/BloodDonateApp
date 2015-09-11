@@ -7,4 +7,7 @@
 @property BOOL registerOrUpdate;
 @property CLLocation *userLocation;
 -(NSString *)trimWhiteSpaces:(NSString *)inputString;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutConstraintBottomSpaceForScrollView;
+-(void)keyboardWasShown:(NSNotification *)notification;
+-(void)keyboardWillHide:(NSNotification *)notification;
 @end

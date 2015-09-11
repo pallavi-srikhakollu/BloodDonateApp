@@ -21,6 +21,7 @@
    IBOutlet UITextField *textFieldEmailId;
     NSMutableDictionary * dictonaryToPost;
     CLLocationManager *locationManager;
+    float keyboardHeight;
   //  CLLocation *userLocation;
 
 
@@ -45,6 +46,12 @@
     {
         [self updateScreen];
     }
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
 }
 
 
@@ -137,18 +144,17 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
             [self convertToJson:dictonaryToPost];
         }
         else if (userLocation.coordinate.latitude == 0.0){
-            [self alertMessageDisplay:@"Unable To get location" withMessage:@"To re-enable, please go to Settings and turn on Location Service for this app."];
+            [self alertMessageDisplay:ERRORFORLOCATION withMessage:ALERTMESSAGEFORLOCATIONERROR];
             
         }
         else {
-            NSLog(@"disllowed gps");
-            [self alertMessageDisplay:@"Unable To get location" withMessage:@"To re-enable, please go to Settings and turn on Location Service for this app."];
+            //NSLog(@"disllowed gps");
+            [self alertMessageDisplay:ERRORFORLOCATION withMessage:ALERTMESSAGEFORLOCATIONERROR];
 
         }
         
         
-   // NSLog(@"Data saved");
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:MAIN bundle:nil];
+       UIStoryboard *storyboard = [UIStoryboard storyboardWithName:MAIN bundle:nil];
         FrontViewController *front = [storyboard instantiateViewControllerWithIdentifier:FRONTVIEWCONTROLLER];
       
         [self.navigationController pushViewController:front animated:NO];
@@ -270,5 +276,19 @@ UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message 
     return [emailTest evaluateWithObject:checkString];
 }
 
+#pragma mark : Keyboard functions
 
+-(void)keyboardWasShown:(NSNotification *)notification{
+   
+    NSDictionary *keyboardInfo = [notification userInfo];
+    CGSize keyboardSize = [[keyboardInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+     keyboardHeight = keyboardSize.height;
+    _layoutConstraintBottomSpaceForScrollView.constant = _layoutConstraintBottomSpaceForScrollView.constant + keyboardHeight;
+   
+    
+}
+-(void)keyboardWillHide:(NSNotification *)notification{
+      _layoutConstraintBottomSpaceForScrollView.constant = _layoutConstraintBottomSpaceForScrollView.constant - keyboardHeight;
+
+}
 @end

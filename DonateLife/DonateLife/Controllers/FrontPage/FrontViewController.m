@@ -3,6 +3,8 @@
 #import "FrontViewController.h"
 #import <MapKit/MKFoundation.h>
 #define REGISTRATIONPAGEVIEWCONTROLLER @"RegistrationPageViewController"
+#define DONORDISPLAYVIEWCONTROLLER @"DonorsDisplayViewController"
+#define HISTORYLISTVIEWCONTROLLER @"HistoryListViewController"
 
 @interface FrontViewController ()
 {
@@ -117,48 +119,24 @@
 }
 
 
-#pragma mark :- parsing json
-
--(void)parseData{
-    NSLog(@"%@",[dictonaryForInfo valueForKeyPath:@"error.errorCode" ] );
-    if([[dictonaryForInfo valueForKeyPath:@"status.statusCode" ] isEqualToValue: @200] )
-    {
-        NSMutableDictionary *donar;
-        for(donar in [dictonaryForInfo valueForKey:@"data"])
-        {
-            Donor *donarInfo = [[Donor alloc]init];
-            
-            donarInfo.name = [donar valueForKey:NAME];
-            
-            donarInfo.email = [donar valueForKey:EMAIL];
-            donarInfo.phoneNo = [donar valueForKey:PHONENO];
-            donarInfo.lattitude = [[donar valueForKey:LATTITUDE] integerValue];
-            donarInfo.longitude  = [[ donar valueForKey:LONGITUDE] integerValue];
-            [arrayOfDonars addObject:donarInfo];
-        }
-        
-    }
-}
 
 
+# pragma mark: Button Action
 
 - (IBAction)buttonHistoryAction:(id)sender {
     
-    HistoryListViewController *historyListViewController  = [storyboard instantiateViewControllerWithIdentifier:@"HistoryListViewController"];
+    HistoryListViewController *historyListViewController  = [storyboard instantiateViewControllerWithIdentifier:HISTORYLISTVIEWCONTROLLER];
     [self.navigationController pushViewController:historyListViewController animated:YES];
     
 }
+
 - (IBAction)buttonSearchBloodAction:(id)sender {
-    layoutConstraintHeightForTable.constant = 182;
+    layoutConstraintHeightForTable.constant = 170;
     [tableViewBloodList registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     [tableViewBloodList reloadData];
-    //[self activityIndicatorIntailser];
     
 }
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [tableViewForSettings removeFromSuperview];
-    layoutConstraintHeightForTable.constant = 0;
-}
+
 - (IBAction)barButtonSettingAction:(id)sender {
     
     
@@ -176,9 +154,16 @@
     else {
         [tableViewForSettings removeFromSuperview];
     }
-    
-    
+
 }
+
+#pragma mark : screen tocuh Action
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [tableViewForSettings removeFromSuperview];
+    layoutConstraintHeightForTable.constant = 0;
+}
+
 #pragma mark - current location
 
 -(void)gettingCurrentLocation{
@@ -278,10 +263,20 @@
 }
 
 #pragma mark: search bloodtable list
--(void)onClickOfBloodListTAble{
 
+-(void)onClickOfBloodListTAble{
+    
+    if(userLocation.coordinate.latitude == 0.000000)
+    {
+        [self alertMessageDisplay:ERRORFORLOCATION withMessage:ALERTMESSAGEFORLOCATIONERROR];
+        
+    }
+    
+    else{
+    
+ [self activityIndicatorIntailser];
     layoutConstraintHeightForTable.constant = 0;
-    DonorsDisplayViewController *donorsDisplayViewController1 = [storyboard instantiateViewControllerWithIdentifier:@"DonorsDisplayViewController"];
+    DonorsDisplayViewController *donorsDisplayViewController1 = [storyboard instantiateViewControllerWithIdentifier:DONORDISPLAYVIEWCONTROLLER];
     
     [self DicitonaryFormation];
     [self convertToJson:dictonaryToPost];
@@ -291,7 +286,7 @@
     donorsDisplayViewController1.donorsArray = arrayOfDonars;
     donorsDisplayViewController1.userLocation = userLocation;
     [self.navigationController  pushViewController:donorsDisplayViewController1 animated:YES];
-
+    }
 }
 
 #pragma mark: on click of Update
@@ -328,12 +323,41 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dicitonaryToConvert
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
-    NSLog(@"%@",jsonData);
-    NSString* aStr;
-    aStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",aStr);
+    //NSLog(@"%@",jsonData);
+    NSString* jsonInStringForm;
+    jsonInStringForm = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    //NSLog(@"%@",aStr);
+    [activityIndicator startAnimating];
     
 }
+
+#pragma mark :- parsing json
+
+-(void)parseData{
+    
+    NSLog(@"%@",[dictonaryForInfo valueForKeyPath:ERRORCODE ] );
+    if([[dictonaryForInfo valueForKeyPath:STATUSCODE ] isEqualToValue: @200] )
+    {
+        NSMutableDictionary *donar;
+        for(donar in [dictonaryForInfo valueForKey:DATAKEY])
+        {
+            Donor *donarInfo = [[Donor alloc]init];
+            
+            donarInfo.name = [donar valueForKey:NAME];
+            
+            donarInfo.email = [donar valueForKey:EMAIL];
+            donarInfo.phoneNo = [donar valueForKey:PHONENO];
+            donarInfo.lattitude = [[donar valueForKey:LATTITUDE] integerValue];
+            donarInfo.longitude  = [[ donar valueForKey:LONGITUDE] integerValue];
+            [arrayOfDonars addObject:donarInfo];
+        }
+        
+    }
+    else {
+        [self alertMessageDisplay:ERRORMESSAGEFORRESPONSE withMessage:ALERTMESSAGEFORRESPONEERROR];
+    }
+}
+
 
 #pragma  mark : activityIndicator
 
@@ -346,10 +370,16 @@
     [activityIndicator startAnimating];
     [self.view addSubview:self.overlayView];
     
-    
-    
-    
+
 }
+
+#pragma mark : AlertView
+-(void)alertMessageDisplay:(NSString *)title withMessage:(NSString *)message{
+    UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
+    [alertView show];
+}
+
+
 
 @end
 

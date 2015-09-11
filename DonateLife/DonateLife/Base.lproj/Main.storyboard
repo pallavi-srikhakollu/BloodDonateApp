@@ -23,6 +23,9 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ViC-w7-IFX">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999964" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="jjl-uu-fLg">
+                                                <rect key="frame" x="0.0" y="3" width="320" height="545"/>
+                                            </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jzB-fg-lZy">
                                                 <rect key="frame" x="41" y="57" width="256" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -119,6 +122,7 @@
                     <navigationItem key="navigationItem" id="72j-7e-ohb"/>
                     <connections>
                         <outlet property="buttonForRegisterAndUpdate" destination="5oA-4d-9cH" id="3y1-ag-cUz"/>
+                        <outlet property="layoutConstraintBottomSpaceForScrollView" destination="Klg-S3-hJD" id="YhA-vu-rDZ"/>
                         <outlet property="pickerViewBloodTypes" destination="SoD-c3-avb" id="sTL-Jr-gRR"/>
                         <outlet property="switchForPrivacy" destination="jt7-8j-oxx" id="s4r-g1-6nj"/>
                         <outlet property="textFieldEmailId" destination="pUf-Ni-FZu" id="Cxb-KV-JFl"/>
@@ -424,6 +428,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BackgroundImage" width="570" height="538"/>
         <image name="Image-1" width="210" height="161"/>
         <image name="Image-2" width="206" height="40"/>
         <image name="Image-3" width="211" height="39"/>

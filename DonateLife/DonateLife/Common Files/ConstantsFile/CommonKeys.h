@@ -2,6 +2,9 @@
 
 #ifndef DonateLife_CommonKeys_h
 #define DonateLife_CommonKeys_h
+#define ERRORCODE @"error.errorCode"
+#define STATUSCODE @"status.statusCode"
+#define DATAKEY @"data"
 #define NAME @"name"
 #define PHONENO @"phone"
 #define EMAIL @"email"

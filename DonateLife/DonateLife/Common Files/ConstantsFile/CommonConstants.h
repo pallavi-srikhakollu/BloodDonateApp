@@ -8,8 +8,8 @@
 #define CellIdentifier  @"cell"
 #define EMPTYSTRING @""
 #define MAIN @"Main"
-//NSMutableArray *arrayOfDates;
-//NSMutableArray *arrayOfLocations;
-//static  NSArray *bloodTypes =[[NSArray alloc] initWithObjects:@"A+",@"A-",@"B+",@"B-",@"AB+",@"AB-",@"O+", nil];
-//
+#define ERRORFORLOCATION @"Unable To get location"
+#define ALERTMESSAGEFORLOCATIONERROR @"To re-enable, please go to Settings and turn on Location Service for this app."
+#define ERRORMESSAGEFORRESPONSE @"Response not received"
+#define  ALERTMESSAGEFORRESPONEERROR @"Error whilereceiveing response"
 #endif

@@ -55,6 +55,12 @@
 
 #pragma mark : Add details Action
 - (void)buttonActionAddDetails {
+    if([[self trimWhiteSpaces:(textFieldLocation.text)] isEqualToString:EMPTYSTRING])
+    {
+        [self alertMessageDisplay:titleForEmpty withMessage:@""];
+
+    }
+    else{
     [self dateFormatter];
     DBHelper *databaseHelper = [[DBHelper alloc]init];
     databaseHelper.dbName = @"HistoryInfo";
@@ -63,6 +69,7 @@
     [databaseHelper insertIntoTable:dictionaryToInsert];
     
     [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 -(void)dicitonaryTosave{
@@ -85,6 +92,15 @@
     return str;
 }
 
-
+-(NSString *)trimWhiteSpaces:(NSString *)inputString{
+    
+    inputString = [inputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    return inputString;
+}
+-(void)alertMessageDisplay:(NSString *)title withMessage:(NSString *)message{
+    UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
+    [alertView show];
+}
 
 @end
