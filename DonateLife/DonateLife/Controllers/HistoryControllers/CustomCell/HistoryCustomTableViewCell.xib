@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="101" id="KGk-i7-Jjw" customClass="HistoryCustomTableViewCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="101" id="KGk-i7-Jjw" customClass="HistoryCustomTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -15,26 +15,60 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKW-3k-h9R">
-                        <rect key="frame" x="25" y="15" width="42" height="21"/>
+                        <rect key="frame" x="132" y="15" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u66-9Z-IPc">
-                        <rect key="frame" x="25" y="58" width="42" height="21"/>
+                        <rect key="frame" x="132" y="58" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PrY-1d-ozb">
+                        <rect key="frame" x="16" y="15" width="77" height="77"/>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.49170923150000001" blue="0.45246198850000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="77" id="2bL-oe-aKl"/>
+                            <constraint firstAttribute="width" constant="77" id="HHQ-ee-Hjx"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aq-14-Mi8">
+                        <rect key="frame" x="279" y="11" width="33" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="PRL-mz-4wo"/>
+                            <constraint firstAttribute="width" constant="33" id="rwx-hl-5BB"/>
+                        </constraints>
+                        <state key="normal" image="bin">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="deleteButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tky-oh-vVc"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="u66-9Z-IPc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="17" id="5zx-n4-US2"/>
+                    <constraint firstItem="NKW-3k-h9R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="124" id="1OO-tH-6eF"/>
                     <constraint firstItem="u66-9Z-IPc" firstAttribute="top" secondItem="NKW-3k-h9R" secondAttribute="bottom" constant="22" id="LfK-mT-agL"/>
+                    <constraint firstItem="PrY-1d-ozb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="NVK-c1-EyV"/>
                     <constraint firstItem="NKW-3k-h9R" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="Ntd-FO-Hdy"/>
-                    <constraint firstItem="NKW-3k-h9R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="17" id="egF-wq-4Bk"/>
+                    <constraint firstItem="4aq-14-Mi8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="Vzk-vA-ov1"/>
+                    <constraint firstItem="4aq-14-Mi8" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="dPS-TG-8CQ"/>
+                    <constraint firstItem="u66-9Z-IPc" firstAttribute="leading" secondItem="NKW-3k-h9R" secondAttribute="leading" id="goo-Qf-07D"/>
+                    <constraint firstItem="PrY-1d-ozb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="wGf-pj-v7i"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="316" y="331.5"/>
+            <connections>
+                <outlet property="buttonForDelete" destination="4aq-14-Mi8" id="LVp-jR-Orv"/>
+                <outlet property="imageViewForCetificate" destination="PrY-1d-ozb" id="iOA-l5-ie5"/>
+                <outlet property="labelForDate" destination="u66-9Z-IPc" id="1JZ-tW-gb7"/>
+                <outlet property="labelForLocation" destination="NKW-3k-h9R" id="aCH-sp-Ljp"/>
+            </connections>
+            <point key="canvasLocation" x="19" y="309.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="bin" width="43" height="45"/>
+    </resources>
 </document>

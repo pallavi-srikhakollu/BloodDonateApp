@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DBHelper.h"
 @interface HistoryCustomTableViewCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewForCetificate;
+@property (weak, nonatomic) IBOutlet UILabel *labelForLocation;
+@property (weak, nonatomic) IBOutlet UIButton *buttonForDelete;
+@property (weak, nonatomic) IBOutlet UILabel *labelForDate;
+@property DBHelper *databaseHelper;
 @end

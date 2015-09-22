@@ -24,15 +24,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = false;
-//    [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithCGColor:#FF132F]];
-//                                                      colorWithRed:<#(CGFloat)#> green:<#(CGFloat)#> blue:<#(CGFloat)#> alpha:<#(CGFloat)#> ];
     
     NSLog(@"navigation controller %@",self.navigationController);
     self.segmentedController.selectedSegmentIndex = 0;
     
     listView = [[[NSBundle mainBundle] loadNibNamed:LISTVIEW owner:self options:nil] lastObject];
     mapView = [[[NSBundle mainBundle] loadNibNamed:MAPVIEW owner:self options:nil] lastObject];
-    //CellIdentifier = @"cell";
+   
     listView.tableListForDonors.dataSource = self;
     listView.tableListForDonors.delegate =self;
     
@@ -204,7 +202,7 @@ GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
         
         mapView.translatesAutoresizingMaskIntoConstraints = false;
         mapView.hidden = NO;
-         NSLog(@"navigation controller %@",self.navigationController);
+      
         [self.viewContainer addSubview:mapView];
         [self.viewContainer addConstraint:[NSLayoutConstraint constraintWithItem:mapView
                                                                        attribute:NSLayoutAttributeLeading

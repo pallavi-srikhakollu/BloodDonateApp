@@ -276,8 +276,8 @@
 			children = (
 				F19C57F11B9D4B31008D750C /* HistoryListViewController.h */,
 				F19C57F21B9D4B31008D750C /* HistoryListViewController.m */,
-				F1ED72881B9FFDA40081E07E /* AddHistory */,
 				F1EC8FF81B9F0D2200CC06EA /* CustomCell */,
+				F1ED72881B9FFDA40081E07E /* AddHistory */,
 			);
 			name = HistoryPage;
 			sourceTree = "<group>";

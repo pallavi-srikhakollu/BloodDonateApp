@@ -12,4 +12,6 @@
 #define ALERTMESSAGEFORLOCATIONERROR @"To re-enable, please go to Settings and turn on Location Service for this app."
 #define ERRORMESSAGEFORRESPONSE @"Response not received"
 #define  ALERTMESSAGEFORRESPONEERROR @"Error whilereceiveing response"
+#define NOIMAGE @"No Image"
+
 #endif

@@ -19,6 +19,7 @@
     CLLocationManager *locationManager;
     UIStoryboard *storyboard;
     UIActivityIndicatorView *activityIndicator ;
+    UIVisualEffectView *overlayView ;
     
 }
 
@@ -281,7 +282,7 @@
     
     else{
     
- //[self activityIndicatorIntailser];
+ [self activityIndicatorIntailser];
         
     layoutConstraintHeightForTable.constant = 0;
     DonorsDisplayViewController *donorsDisplayViewController1 = [storyboard instantiateViewControllerWithIdentifier:DONORDISPLAYVIEWCONTROLLER];
@@ -335,10 +336,7 @@
     NSString* jsonInStringForm;
     jsonInStringForm = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     //NSLog(@"%@",aStr);
-    [activityIndicator stopAnimating];
-    [activityIndicator removeFromSuperview];
-   //[self.overlayView removeFromSuperview];
-    
+
 }
 
 #pragma mark :- parsing json
@@ -371,21 +369,27 @@
 
 #pragma  mark : activityIndicator
 
-//-(void)activityIndicatorIntailser{
-////    self.overlayView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-////    self.overlayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-//    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-////    activityIndicator.center = self.overlayView.center;
-////    [self.overlayView addSubview:activityIndicator];
-////    [activityIndicator startAnimating];
-////    [self.view addSubview:self.overlayView];
-//    
-//
-//}
+-(void)activityIndicatorIntailser{
+   //overlayView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  //  overlayView.backgroundColor =[[UIColor clearColor]colorWithAlphaComponent:0.2];
+    UIBlurEffect * blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    overlayView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+     overlayView.frame = self.view.bounds;
+   // overlayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    overlayView.opaque = NO;
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    activityIndicator.center = overlayView.center;
+    
+    [overlayView addSubview:activityIndicator];
+    [activityIndicator startAnimating];
+    [self.view addSubview:overlayView];
+    
+
+}
 
 #pragma mark : AlertView
 -(void)alertMessageDisplay:(NSString *)title withMessage:(NSString *)message{
-    UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
+    UIAlertView *alertView =[[UIAlertView alloc]initWithTitle:title message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alertView show];
 }
 
